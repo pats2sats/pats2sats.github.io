@@ -1542,10 +1542,19 @@ GitHub Pages workflow:
 Current visual assets:
 
 - Hostr screenshot from local Hostr working directory.
+- Hostr product demo video at `/assets/hostr-product-demo.mp4`.
 - Nestr screenshot from local Nestr app.
 - Evolut screenshot extracted from demo video.
+- Evolut demo opens as a Google Drive preview player because the source video is a 2.2 GB Drive file named `Evolut Demo.mov`.
 - Sudonym screenshot from the Sudonym homepage assets.
 - GitHub avatar from GitHub avatar CDN.
+
+Featured project repo visibility in the portfolio:
+
+- Hostr: public repo, `https://github.com/sudonym-btc/hostr`.
+- Evolut: private source repos under `pats2sats`, represented by `https://github.com/pats2sats/linkedin_frontend`.
+- Sudonym: private repo, `https://github.com/sudonym-btc/sudonym`.
+- Nestr: public repo, `https://github.com/sudonym-btc/nestr`.
 
 ## AI Interaction Plan for Portfolio
 

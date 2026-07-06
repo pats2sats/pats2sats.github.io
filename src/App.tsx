@@ -2,8 +2,10 @@ import {
   ArrowDown,
   Calendar,
   ExternalLink,
+  LockKeyhole,
   Menu,
   Moon,
+  Play,
   Send,
   Sun,
   X,
@@ -12,6 +14,11 @@ import { useEffect, useMemo, useState } from "react";
 
 type Theme = "dark" | "light";
 type ProjectVariant = "hostr" | "nestr" | "evolut" | "sudonym";
+type DemoSource = {
+  title: string;
+  type: "video" | "iframe";
+  src: string;
+};
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -26,6 +33,8 @@ const projects: Array<{
   description: string;
   link: string;
   linkLabel: string;
+  repoPrivate: boolean;
+  demo?: DemoSource;
   stack: string[];
   variant: ProjectVariant;
 }> = [
@@ -34,7 +43,13 @@ const projects: Array<{
     description:
       "Peer-to-peer accommodation built on Nostr and Lightning, with a Flutter app, SDK, CLI, and MCP surface for AI-assisted booking workflows.",
     link: "https://github.com/sudonym-btc/hostr",
-    linkLabel: "Repository",
+    linkLabel: "Public repo",
+    repoPrivate: false,
+    demo: {
+      title: "Hostr Product Demo",
+      type: "video",
+      src: "/assets/hostr-product-demo.mp4",
+    },
     stack: ["Flutter", "Dart", "Nostr", "Lightning", "MCP"],
     variant: "hostr",
   },
@@ -42,8 +57,14 @@ const projects: Array<{
     name: "Evolut",
     description:
       "A SaaS platform for LinkedIn marketing automation with an Angular dashboard, NestJS API, Puppeteer workers, GCP infrastructure, Stripe billing, Zapier, and Electron builds.",
-    link: "https://github.com/pats2sats",
-    linkLabel: "GitHub",
+    link: "https://github.com/pats2sats/linkedin_frontend",
+    linkLabel: "Private repos",
+    repoPrivate: true,
+    demo: {
+      title: "Evolut Demo",
+      type: "iframe",
+      src: "https://drive.google.com/file/d/1SlrToYoWAD9beqE-yhPbRDnR5GVzTOYT/preview",
+    },
     stack: ["Angular", "NestJS", "Puppeteer", "GCP", "Stripe"],
     variant: "evolut",
   },
@@ -53,6 +74,7 @@ const projects: Array<{
       "A white-label Bitcoin and Lightning wallet with a Flutter app, NestJS API, Core Lightning node services, LNURL flows, BOLT card support, and app-store pipelines.",
     link: "https://github.com/sudonym-btc/sudonym",
     linkLabel: "Private repo",
+    repoPrivate: true,
     stack: ["Flutter", "NestJS", "Lightning", "LNURL", "GCP"],
     variant: "sudonym",
   },
@@ -60,7 +82,8 @@ const projects: Array<{
     name: "Nestr",
     description: "A virtual office environment for nostr protocol chatrooms",
     link: "https://github.com/sudonym-btc/nestr",
-    linkLabel: "Repository",
+    linkLabel: "Public repo",
+    repoPrivate: false,
     stack: ["React", "TypeScript", "Three.js", "NIP-29", "WebRTC"],
     variant: "nestr",
   },
@@ -153,11 +176,33 @@ function getInitialTheme(): Theme {
 function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeDemo, setActiveDemo] = useState<DemoSource | null>(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     window.localStorage.setItem("theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    if (!activeDemo) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveDemo(null);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeDemo]);
 
   const activeIcon = useMemo(
     () => (theme === "dark" ? <Moon size={18} /> : <Sun size={18} />),
@@ -285,19 +330,15 @@ function App() {
                 width="200"
                 height="200"
               />
-              <div className="portrait-caption">
-                <strong>Patrick Geyer</strong>
-                <span>self-sovereign product engineering</span>
-              </div>
             </article>
 
             <article className="about-tile text-tile">
               <p className="tile-label">Craft</p>
-              <h2>Building software where money, identity, and real products meet.</h2>
+              <h2>Building software in finance, cryptography, marketing.</h2>
               <p>
-                I work around cryptography, bitcoin, Nostr, and practical
-                product systems. The useful thing is the target: fewer demos,
-                more tools people can actually pick up.
+                I have shipped frontend, backend and cloud components for
+                applications serving the marketing, finance and bitcoin
+                industries.
               </p>
             </article>
 
@@ -309,8 +350,11 @@ function App() {
 
             <article className="about-tile signal-tile">
               <p className="tile-label">Signal</p>
-              <h3>Cryptography, bitcoin, programming</h3>
-              <p>Public work lives on GitHub. The portfolio starts with the active projects below.</p>
+              <h3>Open source projects</h3>
+              <p>
+                Some of my own projects live open source on GitHub. Feel free
+                to check them out below or ask about them in the chat above.
+              </p>
             </article>
           </div>
         </section>
@@ -339,11 +383,28 @@ function App() {
                       <span key={item}>{item}</span>
                     ))}
                   </div>
-                  <a className="project-link" href={project.link} target="_blank" rel="noreferrer">
-                    <GitHubMark />
-                    <span>{project.linkLabel}</span>
-                    <ExternalLink size={15} />
-                  </a>
+                  <div className="project-actions">
+                    <a
+                      className={`project-link ${project.repoPrivate ? "private-link" : ""}`}
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {project.repoPrivate ? <LockKeyhole size={16} /> : <GitHubMark />}
+                      <span>{project.linkLabel}</span>
+                      <ExternalLink size={15} />
+                    </a>
+                    {project.demo && (
+                      <button
+                        className="project-demo-button"
+                        type="button"
+                        onClick={() => setActiveDemo(project.demo ?? null)}
+                      >
+                        <Play size={16} />
+                        <span>Demo</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
                 <ProjectVisual variant={project.variant} />
               </article>
@@ -372,6 +433,43 @@ function App() {
         </a>
         <span>Patrick Geyer</span>
       </footer>
+
+      {activeDemo && (
+        <div className="demo-modal" role="dialog" aria-modal="true" aria-label={activeDemo.title}>
+          <button
+            className="demo-backdrop"
+            type="button"
+            aria-label="Close demo"
+            onClick={() => setActiveDemo(null)}
+          />
+          <div className="demo-dialog">
+            <div className="demo-header">
+              <p className="tile-label">Demo</p>
+              <h2>{activeDemo.title}</h2>
+              <button
+                className="icon-button demo-close"
+                type="button"
+                aria-label="Close demo"
+                onClick={() => setActiveDemo(null)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="demo-player">
+              {activeDemo.type === "video" ? (
+                <video src={activeDemo.src} controls autoPlay playsInline />
+              ) : (
+                <iframe
+                  src={activeDemo.src}
+                  title={activeDemo.title}
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
