@@ -197,21 +197,20 @@ function App() {
               Hi, I&apos;m <span>Patrick Geyer</span>
             </h1>
 
-            <div className="question-panel" aria-label="Portfolio highlights">
+            <div className="question-panel" aria-label="Portfolio prompts">
               <div className="panel-log">
-                <p className="prompt">Ask me anything about Patrick...</p>
+                <p className="prompt">
+                  Ask about personal projects or professional employment...
+                </p>
               </div>
 
               <div className="prompt-row">
-                <a href="#projects">Hostr</a>
-                <a href="#projects">Nestr</a>
-                <a href="#projects">Evolut</a>
-                <a href="#projects">Sudonym</a>
-                <a href="#stack">Skills</a>
+                <a href="#projects">Ask about personal projects</a>
+                <a href="#about">Ask about professional employment</a>
               </div>
 
               <div className="fake-input">
-                <span>Ask anything about Patrick...</span>
+                <span>Ask about personal projects or professional employment...</span>
                 <a href="#projects" aria-label="Jump to projects">
                   <Send size={16} />
                 </a>
