@@ -10,8 +10,8 @@ Use this as durable context for AIs, portfolio chatbots, recruiters, and collabo
 - Preferred contact email: patrick.geyer1@gmail.com.
 - Public portfolio: https://pats2sats.github.io/
 - GitHub profile: https://github.com/pats2sats
-- Patrick is a backend-leaning full-stack engineer with 10+ years of JavaScript/Node.js experience and newer production work in Dart/Flutter, React, Angular, Nostr, Lightning, Terraform, Docker, and Google Cloud.
-- When asked about his projects, lead with Hostr, Nestr, Evolut, and Sudonym.
+- Patrick is a backend-leaning full-stack engineer with 10+ years of JavaScript/Node.js experience and newer production work in Dart/Flutter, React, Angular, Nostr, Lightning, Cashu, EVM escrow, account abstraction, Terraform, Docker, Google Cloud, and Go.
+- When asked about main portfolio projects, lead with Hostr, Nestr, Evolut, and Sudonym. When asked about broader GitHub work, include the NMDK marketplace stack and Zap CLI.
 - When unsure, say what is source-backed and what needs Patrick confirmation.
 - Do not invent metrics, revenue, user counts, customer names, or claims about current production status unless they are explicitly listed here.
 - Do not reveal credentials, tokens, service account files, private keys, API keys, private customer data, or copied source code from private repositories.
@@ -26,6 +26,20 @@ Highest-confidence sources inspected:
 - Hostr repo: `/Users/sudonym/Desktop/hostr`
 - Nestr repo: `/Users/sudonym/Desktop/nestr`
 - Sudonym wallet repo: `/Users/sudonym/Documents/Codex/2026-07-06/i-wo/work/sudonym`
+- Additional GitHub repo scan under `/Users/sudonym/Documents/Codex/2026-07-06/i-wo/work/repo-scan`:
+  - `sudonym-btc/nmdk`
+  - `sudonym-btc/marketplace-app-ts`
+  - `sudonym-btc/marketplace-evm-ts`
+  - `sudonym-btc/marketplace-cashu-ts`
+  - `sudonym-btc/marketplace-evm-contracts`
+  - `sudonym-btc/marketplace-evm-stack`
+  - `sudonym-btc/marketplace-cashu-stack`
+  - `sudonym-btc/marketplace-driver-interface-ts`
+  - `sudonym-btc/marketplace-location-interface-ts`
+  - `sudonym-btc/marketplace-location-h3-ts`
+  - `sudonym-btc/hostr-codex`
+  - `sudonym-btc/zap`
+  - `sudonym-btc/homebrew-zap`
 - Evolut private source repos cloned for inspection:
   - `pats2sats/linkedin_frontend`
   - `pats2sats/linkedin_api`
@@ -54,7 +68,7 @@ Good one-line summaries:
 
 Good longer summary:
 
-Patrick is a backend-leaning full-stack engineer with 10+ years of JavaScript and Node.js experience, plus hands-on production experience in TypeScript, NestJS, Angular, React, Dart, Flutter, Docker, Terraform, Google Cloud, AWS, CI/CD, and app-store deployment. He has built crypto exchange order-flow systems, SaaS marketing automation, a custodial Bitcoin wallet, and newer self-sovereign product experiments around Nostr, Lightning, Rootstock EVM, MCP, and AI-assisted workflows.
+Patrick is a backend-leaning full-stack engineer with 10+ years of JavaScript and Node.js experience, plus hands-on production experience in TypeScript, NestJS, Angular, React, Dart, Flutter, Docker, Terraform, Google Cloud, AWS, CI/CD, and app-store deployment. He has built crypto exchange order-flow systems, SaaS marketing automation, a custodial Bitcoin wallet, and newer self-sovereign product experiments around Nostr, Lightning, Cashu, Rootstock/EVM escrow, account abstraction, MCP, and AI-assisted workflows.
 
 ## Resume Facts
 
@@ -64,6 +78,7 @@ Patrick is a backend-leaning full-stack engineer with 10+ years of JavaScript an
 - Frameworks: NestJS, Flutter, Angular, React.
 - Cloud and DevOps: Google Cloud, AWS, Docker, Kubernetes, CI/CD, Terraform, Serverless.
 - Cryptography and Bitcoin-adjacent systems: Lightning, LNURL, Nostr, Rootstock.
+- Marketplace/payment protocol systems from repo scan: Cashu, P2PK proofs, EVM escrow, ERC-4337 account abstraction, Boltz swaps, H3 geospatial tags, Nostr marketplace event/runtime boundaries, local Bitcoin/Lightning/EVM regtest stacks.
 - AI and ML: TensorFlow certified; university study in Data Science and AI.
 
 ### Employment
@@ -155,6 +170,10 @@ Source-backed work:
 ### One-Line Summary
 
 Sudonym is a white-label Bitcoin and Lightning wallet with a Flutter mobile app, NestJS API, shared TypeScript/Dart models, Core Lightning and c-lightning-rest infrastructure, LNURL and lightning-address support, BOLT card/NFC flows, GCP Deployment Manager infrastructure, Cloud Build deployment, and Codemagic app-store pipelines.
+
+### Project Skills
+
+- Flutter, Dart, NestJS, TypeScript, MySQL, Sequelize, Firebase, Google Cloud, GKE, Cloud Build, Codemagic, Core Lightning, c-lightning-rest, LNURL, lightning addresses, BOLT11, BOLT card/NFC, on-chain Bitcoin flows, iOS/Android release pipelines, shared model generation.
 
 ### Repository
 
@@ -317,6 +336,10 @@ Codemagic:
 ### One-Line Summary
 
 Hostr is a peer-to-peer short-term rental marketplace built on Nostr, Bitcoin/Lightning, and self-custodial escrow ideas, with a Flutter app, Dart SDK/CLI, custom Nostr models, escrow daemon/contracts, Terraform/GCP infrastructure, Docker local stack, and AI/MCP automation surface.
+
+### Project Skills
+
+- Flutter, Dart, Nostr, NIP modeling, Lightning, Boltz, Rootstock/EVM escrow, Solidity, Hardhat, Dart SDK design, CLI/daemon design, MCP server design, TypeScript, Node.js, Docker Compose, Terraform, Google Cloud, Artifact Registry, GitHub Actions, Retype docs, local TLS/dev stacks, Nostr relay authorization, Blossom uploads.
 
 ### Repository
 
@@ -530,11 +553,172 @@ CI details:
 - Terraform deploy uses GCS backend and `var/shared.tfvars` plus environment-specific tfvars.
 - Hosted redeploy uses `gcloud compute ssh` to run `/usr/local/bin/hostr-deploy`.
 
+### Hostr Codex Plugin
+
+Description:
+
+- `sudonym-btc/hostr-codex` is the Codex marketplace distribution repo for Hostr MCP plugins. It packages Hostr plugin variants for default, development, and staging environments and includes skills that teach Codex how to use Hostr MCP tools for lodging search, listing management, reservations, Nostr signer/session workflows, image uploads, messaging, escrow compatibility, and Lightning-to-smart-contract escrow payment flows.
+
+Project skills:
+
+- Codex plugin packaging, MCP tool UX, skill authoring, Nostr workflow guidance, dry-run/write-safety design, AI-assisted marketplace actions, structured listing cards, plugin environment variants, Hostr booking/payment workflow documentation.
+
+## Project: NMDK / Nostr Marketplace Development Kit
+
+### One-Line Summary
+
+NMDK is a modular development kit for Nostr marketplace work. It pins the marketplace protocol/runtime, browser demo client, EVM escrow driver, Cashu escrow driver, location provider packages, Solidity contract artifacts, protocol drafts, local Docker integration stacks, and docs site into one reproducible development snapshot.
+
+### Project Skills
+
+- Nostr marketplace protocol design, TypeScript package architecture, payment-driver interfaces, Cashu escrow, EVM escrow, ERC-4337 account abstraction, Boltz swap orchestration, Rootstock/Arbitrum-style local chains, Solidity ABI/artifact packaging, H3 geospatial indexing, Docker Compose regtest stacks, Bitcoin Core regtest, LND, LNbits, Alby Hub, nostr-rs-relay, Blossom, local TLS, Next.js docs, Fumadocs, TypeDoc, GitHub Pages, deterministic demo capture.
+
+### Repositories
+
+Source-backed repos inspected:
+
+- `sudonym-btc/nmdk`
+- `sudonym-btc/marketplace-app-ts`
+- `sudonym-btc/marketplace-evm-ts`
+- `sudonym-btc/marketplace-cashu-ts`
+- `sudonym-btc/marketplace-evm-contracts`
+- `sudonym-btc/marketplace-evm-stack`
+- `sudonym-btc/marketplace-cashu-stack`
+- `sudonym-btc/marketplace-driver-interface-ts`
+- `sudonym-btc/marketplace-location-interface-ts`
+- `sudonym-btc/marketplace-location-h3-ts`
+
+### Product Scope
+
+NMDK is an aggregate repository. Its README describes it as the place that pins the marketplace protocol, client runtime, payment drivers, demo clients, and local development stacks used by Nostr marketplace work. The implementation repos remain nested submodules so each package can keep its own release cadence while NMDK provides one reproducible development snapshot.
+
+Core boundary:
+
+- Nostr event semantics live in `nostr-tools/marketplace`.
+- Nostr application UX lives in `marketplace-app-ts`.
+- Payment-specific behavior lives in payment policy packages such as `marketplace-cashu-ts` and `marketplace-evm-ts`.
+- Local integration dependencies live in stack repos.
+- Payment packages should not create their own Nostr pools for marketplace order state; they implement a structural marketplace policy interface and receive resolved payment intents from the Nostr runtime.
+
+### NMDK Local Stack
+
+Description:
+
+- `sudonym-btc/nmdk` launches a standalone local marketplace development surface. It starts a Nostr relay, Cashu sat/USD mints, Blossom upload, Arbitrum-style and Rootstock-style RPCs, Boltz API, marketplace LND, LNbits, Alby Hub, EVM account-abstraction bundler/paymaster services, local HTTPS proxy, deterministic seed data, and demo client configuration.
+- `npm run demo:up` launches the full stack plus demo client.
+- `npm run demo:capture:fresh` resets disposable stack data, starts EVM/Cashu arbiters, captures marketplace flows, and writes screenshots plus a WebM recording under `artifacts/marketplace-demo/<run-id>/`.
+
+Project skills:
+
+- Docker Compose orchestration, Bitcoin/Lightning regtest, local TLS/CA setup, reproducible demo capture, deterministic seed data, Nostr relay setup, Cashu mint setup, Boltz integration, LND channel/liquidity initialization, account-abstraction service orchestration, local developer experience design.
+
+### Marketplace App
+
+Description:
+
+- `sudonym-btc/marketplace-app-ts` is a browser demo client for a Nostr marketplace. It includes NIP-46 bunker/Nostr Connect login, marketplace seed recovery through self-encrypted Nostr seed events, EVM marketplace-driver integration, startup payment-method publishing, startup EVM driver discovery/sweep hooks, classified listings, listing detail checkout, inbox, orders, listing editor, and auction/bid pages.
+- The app defaults to NMDK's local relay and can run inside the NMDK dependency tree or in app-only development mode when local services are already running.
+
+Project skills:
+
+- React, Vite, TypeScript, TanStack Router, Radix UI, shadcn-style UI, Tailwind CSS, Nostr Tools, NIP-46/Nostr Connect, Nostr encrypted seed recovery, qrcode rendering, marketplace checkout UX, inbox/order/listing flows, EVM/Cashu payment driver integration, deterministic local-stack configuration.
+
+### Marketplace EVM Driver
+
+Description:
+
+- `sudonym-btc/marketplace-evm-ts` is a Nostr-agnostic EVM payment engine for marketplaces. It owns EVM escrow validation, escrow lifecycle calls, Boltz-backed swap orchestration, operation recovery, and account-abstraction integration.
+- It validates escrow funding proofs from transaction receipts and contract logs; builds escrow fund/release/claim/arbitrate/withdraw calls; executes calls through ERC-4337 account abstraction; coordinates Boltz swap-in/swap-out lifecycles; persists and resumes operations through caller-provided storage; derives per-trade account-abstraction owner accounts from a marketplace seed; and reports deterministic usage watermarks for parent-index recovery.
+
+Project skills:
+
+- TypeScript library design, EVM receipt/log validation, viem, permissionless, ERC-4337, SimpleAccount-style account abstraction, Pimlico-compatible paymaster integration, Boltz REST/OpenAPI, swap lifecycle recovery, deterministic account derivation, storage interfaces, integration testing against local stacks.
+
+### Marketplace Cashu Driver
+
+Description:
+
+- `sudonym-btc/marketplace-cashu-ts` is a Nostr-agnostic Cashu payment policy package for marketplace escrow flows. It creates Cashu BOLT11 mint quotes, waits for invoice settlement, mints P2PK-locked escrow proofs, validates payment proofs, and recovers published payment state from proof data without requiring device-local Cashu state.
+- The driver exposes proof-local payment terms so the Nostr marketplace layer can compare verified facts against signed order or auction data.
+
+Project skills:
+
+- Cashu, Cashu Nuts, P2PK-locked proofs, BOLT11 mint quotes, proof-state validation, payment recovery, Nostr-agnostic driver interfaces, TypeScript policy design, storage/recovery abstractions, local Cashu mint integration.
+
+### Marketplace EVM Contracts
+
+Description:
+
+- `sudonym-btc/marketplace-evm-contracts` is the source of truth for `MultiEscrow` Solidity source, Hardhat artifact JSON, ABI JSON, generated TypeScript exports, and runtime bytecode hash registry. Consumers import ABI/registry data from this package rather than maintaining hand-written ABI copies.
+
+Project skills:
+
+- Solidity, escrow contract artifacts, ABI packaging, runtime bytecode hashes, TypeScript export generation, contract registry design, package-owned generated artifacts, Hardhat/solc workflows.
+
+### Marketplace EVM Stack
+
+Description:
+
+- `sudonym-btc/marketplace-evm-stack` is a standalone Docker stack for testing marketplace EVM drivers against Boltz and EVM environments. It provides Boltz regtest services, Rootstock-style and Arbitrum-style Anvil chains, Boltz EVM swap contracts, mock tBTC/USDT, Uniswap V3 routing contracts, deployed `MultiEscrow`, local ERC-4337 services, and generated JSON config consumed by TypeScript and Dart tests.
+
+Project skills:
+
+- Docker Compose, Anvil, Rootstock-style local chains, Arbitrum-style local chains, Boltz EVM swaps, Uniswap V3 local routing, mock ERC20 assets, ERC-4337 bundler/paymaster services, deterministic contract deployment, generated test config, multi-stack local development.
+
+### Marketplace Cashu Stack
+
+Description:
+
+- `sudonym-btc/marketplace-cashu-stack` is a Docker stack for testing Cashu marketplace escrow and auction drivers against local Cashu mints and a Nostr relay. It joins the EVM/Boltz stack's Bitcoin regtest network so Cashu, Boltz, and marketplace LND services share one Lightning liquidity domain.
+- It provides Cashu Nutshell mints, shared Bitcoin Core regtest access, LND mint/buyer nodes, Cashu BOLT11 backends, Redis-backed cached responses, nostr-rs-relay, and generated JSON config for TypeScript and Dart tests.
+
+Project skills:
+
+- Cashu Nutshell, LND, Bitcoin Core regtest, Lightning channel setup, BOLT11 mint quote settlement, Redis-backed mints, nostr-rs-relay, generated stack config, local integration-test infrastructure, split internal/public service URL design.
+
+### Marketplace Driver Interface
+
+Description:
+
+- `sudonym-btc/marketplace-driver-interface-ts` defines shared TypeScript contracts for marketplace payment drivers. It contains driver-facing data shapes and interfaces only; Nostr relay access and event parsing belong in marketplace runtime code, while concrete chain/mint/swap logic belongs in driver packages.
+- It supports encrypted payment-proof params, optional `decryptParams` hooks, and validated payment terms such as settlement ID, payment amount, funded amount, security bond, escrow fee, unlock time, and timeout claimant.
+
+Project skills:
+
+- TypeScript interface design, package-boundary design, encrypted proof-parameter contracts, NIP-44-style payload handling at adapter boundaries, payment validation API design, strongly typed marketplace abstractions.
+
+### Marketplace Location Packages
+
+Description:
+
+- `sudonym-btc/marketplace-location-interface-ts` defines the provider shape for address lookup, area lookup, and marketplace geospatial tag generation without depending on a concrete geocoder or H3 implementation.
+- `sudonym-btc/marketplace-location-h3-ts` implements an H3-backed marketplace location provider. It accepts upstream resolvers for address-to-coordinates and area-to-polygon, owns `h3-js`, and returns marketplace-ready `["g", cell]` tags.
+
+Project skills:
+
+- H3 geospatial indexing, GeoJSON polygon/multipolygon handling, address/area resolver interfaces, marketplace geospatial tags, TypeScript provider interfaces, decoupling protocol packages from concrete geospatial dependencies.
+
+### Documentation and Developer Experience
+
+Description:
+
+- NMDK uses a GitHub Pages workflow with Node `24`, recursive submodules, Next.js/Fumadocs static docs builds, and a published docs site.
+- Package docs use TypeDoc with `typedoc-plugin-markdown` to generate reference docs under package-owned `docs/reference` folders.
+- The scanned marketplace packages expose docs scripts such as `docs`, `docs:api`, `check`, `build`, integration tests, and generated API references.
+
+Project skills:
+
+- Technical writing, package-owned docs, TypeDoc, typedoc-plugin-markdown, Next.js, Fumadocs, MDX, GitHub Pages, submodule-aware CI, reproducible docs generation, API-reference maintenance, developer onboarding docs.
+
 ## Project: Nestr
 
 ### One-Line Summary
 
 Nestr is a Nostr spatial-office prototype where NIP-29 relay groups become shared office rooms with deterministic 3D maps, live group chat, presence, signer-based auth, encrypted Nostr Connect session restoration, and WebRTC proximity-call modeling.
+
+### Project Skills
+
+- React, TypeScript, Vite, Three.js, GLTFLoader, Tailwind CSS, Radix UI, shadcn-style components, Nostr Tools, NIP-29, NIP-42, NIP-46, NIP-65, NIP-66, NIP-17, NIP-04, IndexedDB/WebCrypto session storage, WebRTC simulation, Playwright, Vitest.
 
 ### Repository
 
@@ -672,6 +856,10 @@ Testing:
 ### One-Line Summary
 
 Evolut was a SaaS platform for automating LinkedIn marketing workflows, with an Angular dashboard, NestJS/Node API, headless Puppeteer bot workers, MySQL/Sequelize data layer, Firebase auth, Google Cloud Pub/Sub task queues, GCP Storage for assets/config/releases, Cloud Build and GKE/App Engine deployments, Stripe billing, SendGrid email, Zapier integration, and a white-label Electron desktop app generator.
+
+### Project Skills
+
+- Angular, Angular Material, NestJS, Node.js, TypeScript, Puppeteer, MySQL, Sequelize, Firebase, Google Cloud Pub/Sub, Google Cloud Storage, Cloud Build, GKE, App Engine Flexible, Docker, Kubernetes, Stripe, SendGrid, Zapier Platform, Electron, white-label builds, headless browser automation, proxy/VPN-aware automation workers.
 
 ### Source Repositories
 
@@ -1239,6 +1427,60 @@ Google Cloud components found in source:
   - Bot README says Node 8 was required for some node-pre-gyp constraints, while Bit did not run on Node 8.
   - Downloadable app uses Electron 4/Node 10 compatibility to avoid node-gyp issues.
 
+## Project: Zap
+
+### One-Line Summary
+
+Zap is a Go CLI for tipping open-source maintainers with Bitcoin/Lightning. It connects to a wallet through Nostr Wallet Connect, discovers maintainers through GitHub/package metadata, supports LNURL/lightning-gift flows, can send gift redemption emails through SMTP, and ships through a Homebrew tap.
+
+### Project Skills
+
+- Go, Cobra CLI, Bubble Tea, Lipgloss, Nostr Wallet Connect, LNURL, Nostr, Lightning, GitHub API, package-manager metadata parsing, SMTP email, Homebrew formula distribution, GoReleaser-style release artifacts, CLI UX, local credential/config handling.
+
+### Repositories
+
+- `sudonym-btc/zap`
+- `sudonym-btc/homebrew-zap`
+
+### Product Scope
+
+Zap is intended for developers to install locally and use while working. During development, it can detect package-install commands and prompt the developer to tip maintainers of dependencies. If a maintainer has a lightning-enabled address, Zap can send a tip directly. If not, it can create a Lightning gift and send an email with a redemption link when SMTP is configured.
+
+Source-backed capabilities:
+
+- Connects to wallets that support Nostr Wallet Connect.
+- Supports commands such as connecting a wallet, tipping a GitHub organization, tipping an email address, and manual confirmation flows.
+- Includes package analyzer modules for ecosystems such as npm, yarn, pip, Maven, Gradle, Brew, apt, Go, Cargo, pods, and ports.
+- Uses GitHub manager code to inspect repository/maintainer context.
+- Includes email service support for gift-redemption emails.
+- Warns that wallet credentials are stored obscured but not encrypted, and recommends minimal wallet spending permissions.
+- `homebrew-zap` contains a generated Homebrew formula for macOS ARM and Intel releases.
+
+### Architecture and Packages
+
+Go module: `github.com/sudonym-btc/zap`.
+
+Runtime packages include:
+
+- `github.com/spf13/cobra` for CLI commands.
+- `github.com/charmbracelet/bubbletea`, `bubbles`, and `lipgloss` for terminal UI.
+- `github.com/nbd-wtf/go-nostr` for Nostr.
+- `github.com/fiatjaf/go-lnurl` for LNURL.
+- `github.com/google/go-github` for GitHub integration.
+- `gopkg.in/mail.v2` for SMTP email.
+- LND/Lightning-related Go dependencies through wallet and invoice flows.
+
+Main source areas:
+
+- `cmd`: CLI command definitions.
+- `service/wallet.go`: wallet connection/payment flow.
+- `service/github-manager`: GitHub organization/repository lookup.
+- `service/package-analyzer`: package-manager ecosystem analyzers.
+- `service/lightning-gifts`: Lightning gift handling.
+- `service/email`: SMTP email sending.
+- `service/tip`: tip orchestration.
+- `service/config`: local config/credential handling.
+
 ## Project: Portfolio Site
 
 Repository: `/Users/sudonym/Desktop/pats2sats.github.io`.
@@ -1316,15 +1558,17 @@ Ask Patrick these follow-up questions before treating this profile as final:
 6. For Nestr, should it be described as a prototype, hack/demo, open-source experiment, or product direction?
 7. For Evolut, should the AI describe it as discontinued, past startup, archived codebase, or portfolio case study?
 8. For Sudonym, should the AI describe it as archived, demo, App Store/TestFlight experience, or a past startup product?
-9. May the AI mention private GitHub repo names like `linkedin_api`, `linkedin_bot`, and `sudonym-btc/sudonym`, or should those be summarized without repo names?
-10. Which Evolut business outcomes can be stated safely: customers, revenue, conversion improvements, usage volume, or "ran a SaaS business" only?
-11. Which Sudonym business/product outcomes can be stated safely: app-store release, user count, transaction volume, Lightning node operations, or "launched a custodial Bitcoin wallet" only?
-12. Are there any technologies Patrick does not want emphasized because they are old or no longer representative?
-13. Should the portfolio AI answer in first person as Patrick, or third person as Patrick's assistant?
-14. What tone should the AI use: concise recruiter-friendly, technical/deep, playful, or balanced?
-15. Should the AI mention Bitcoin/crypto prominently for all audiences, or adapt based on the visitor's question?
-16. Are there any companies, client names, credentials, screenshots, or project details that should be treated as private?
-17. Which hosted chatbot provider should be wired into the portfolio first?
+9. For NMDK and the marketplace packages, should the AI describe them as active protocol/R&D work, production-bound libraries, or supporting infrastructure for Hostr?
+10. For Zap, should the AI describe it as a public developer tool, experiment, archived project, or active product direction?
+11. May the AI mention private GitHub repo names like `linkedin_api`, `linkedin_bot`, and `sudonym-btc/sudonym`, or should those be summarized without repo names?
+12. Which Evolut business outcomes can be stated safely: customers, revenue, conversion improvements, usage volume, or "ran a SaaS business" only?
+13. Which Sudonym business/product outcomes can be stated safely: app-store release, user count, transaction volume, Lightning node operations, or "launched a custodial Bitcoin wallet" only?
+14. Are there any technologies Patrick does not want emphasized because they are old or no longer representative?
+15. Should the portfolio AI answer in first person as Patrick, or third person as Patrick's assistant?
+16. What tone should the AI use: concise recruiter-friendly, technical/deep, playful, or balanced?
+17. Should the AI mention Bitcoin/crypto prominently for all audiences, or adapt based on the visitor's question?
+18. Are there any companies, client names, credentials, screenshots, or project details that should be treated as private?
+19. Which hosted chatbot provider should be wired into the portfolio first?
 
 ## Safe Claims
 
@@ -1335,11 +1579,14 @@ The AI can safely say:
 - Patrick has substantial TypeScript/NestJS experience.
 - Patrick has built production systems on Google Cloud and AWS.
 - Patrick has deployed systems with Docker, CI/CD, Terraform, Cloud Build, GitHub Actions, GCP Artifact Registry, App Engine/GKE, and app-store pipelines.
-- Patrick has built or prototyped products involving Bitcoin, Lightning, LNURL, Nostr, Rootstock EVM, Flutter, Dart, React, Angular, Node.js, NestJS, and TypeScript.
+- Patrick has built or prototyped products involving Bitcoin, Lightning, LNURL, Nostr, Cashu, Rootstock/EVM, account abstraction, Flutter, Dart, React, Angular, Node.js, NestJS, Go, and TypeScript.
 - Hostr is a Nostr-based short-term rental marketplace prototype with Flutter, Dart, Terraform/GCP, Docker, Nostr relay services, Blossom, Lightning/Bitcoin local stacks, EVM escrow contracts, and MCP/AI automation.
+- NMDK is a Nostr marketplace development kit/project family with TypeScript protocol packages, EVM escrow/payment drivers, Cashu escrow/payment drivers, H3 location packages, Solidity contract artifacts, local Docker regtest stacks, a React marketplace demo app, and generated documentation.
+- The NMDK marketplace stack includes experience with Cashu, P2PK escrow proofs, Boltz swap orchestration, ERC-4337 account abstraction, viem, permissionless, Anvil, Rootstock/Arbitrum-style local chains, nostr-rs-relay, LND, LNbits, Alby Hub, Blossom, TypeDoc, Fumadocs, and GitHub Pages docs publishing.
 - Nestr is a React/TypeScript/Three.js Nostr spatial-office prototype using NIP-29, NIP-46, NIP-42, WebRTC concepts, encrypted IndexedDB session storage, and deterministic 3D rooms.
 - Evolut was a LinkedIn marketing automation SaaS built with Angular, NestJS/Node, Puppeteer, MySQL/Sequelize, Firebase, GCP, Docker, Cloud Build, Kubernetes/App Engine, Stripe, SendGrid, Zapier, and Electron.
 - Sudonym was a white-label Bitcoin and Lightning wallet built with Flutter, Dart, NestJS, TypeScript, MySQL/Sequelize, Firebase, Core Lightning, c-lightning-rest, LNURL, BOLT card/NFC support, Google Cloud Deployment Manager, GKE, Cloud Build, and Codemagic app-store pipelines.
+- Zap is a Go CLI for Bitcoin/Lightning maintainer tipping with Nostr Wallet Connect, LNURL, GitHub/package metadata analysis, SMTP-based lightning-gift emails, terminal UI packages, and Homebrew distribution.
 
 ## Claims That Need Confirmation
 
@@ -1352,6 +1599,8 @@ Do not state these as fact until Patrick confirms:
 - Hostr production/commercial status.
 - Nestr product roadmap.
 - Sudonym current availability, user/transaction metrics, and whether it should be framed as archived, demo, or launched product.
+- NMDK package status, production-readiness, release/versioning plans, and whether it should be framed as Hostr infrastructure or standalone marketplace protocol work.
+- Zap current maintenance status, usage metrics, release status, and whether wallet credential handling has changed since the inspected README warning.
 - Whether private repo names may be mentioned publicly.
 - Whether phone number should be exposed.
 - Whether older Evolut details should be framed as "legacy stack" or simply "historical startup work."
