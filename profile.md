@@ -1,4 +1,4 @@
-# Patrick Geyer AI Profile
+# Patrick Geyer Profile
 
 Last updated: 2026-07-06
 
@@ -1534,13 +1534,13 @@ The original inspiration site used a custom `/api/chat` endpoint with streamed O
 
 Practical options:
 
-- Use a hosted chatbot widget such as Chatbase, SiteGPT, DocsBot, or similar. Train it on this `ai-profile.md`, project repos/docs, and selected public pages. This avoids hosting Patrick's own backend.
+- Use a hosted chatbot widget such as Chatbase, SiteGPT, DocsBot, or similar. Train it on this `profile.md`, project repos/docs, and selected public pages. This avoids hosting Patrick's own backend.
 - Use a user-supplied API key in the browser for local/private demos only. Do not use this for a public portfolio.
 - Use a tiny serverless proxy only if a custom chat UI and exact styling are required.
 
 Recommended no-backend setup:
 
-1. Publish `public/ai-profile.md` so it is reachable at `https://pats2sats.github.io/ai-profile.md`.
+1. Publish `public/profile.md` so it is reachable at `https://pats2sats.github.io/profile.md`.
 2. Create a Chatbase/SiteGPT/DocsBot bot.
 3. Add the public profile URL and any selected docs URLs as sources.
 4. Paste the widget embed into the portfolio.
