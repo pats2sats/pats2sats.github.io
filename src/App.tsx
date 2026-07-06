@@ -200,6 +200,7 @@ function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDemo, setActiveDemo] = useState<DemoSource | null>(null);
+  const [portfolioQuestion, setPortfolioQuestion] = useState("");
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -329,16 +330,32 @@ function App() {
                 </button>
               </div>
 
-              <div className="fake-input">
-                <span>Ask about personal projects or professional employment...</span>
+              <form
+                className="fake-input"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  openPortfolioChat(
+                    portfolioQuestion.toLowerCase().includes("employ") ||
+                      portfolioQuestion.toLowerCase().includes("work")
+                      ? "about"
+                      : "projects",
+                  );
+                }}
+              >
+                <input
+                  type="text"
+                  value={portfolioQuestion}
+                  placeholder="Ask about personal projects or professional employment..."
+                  aria-label="Ask about Patrick Geyer"
+                  onChange={(event) => setPortfolioQuestion(event.target.value)}
+                />
                 <button
-                  type="button"
+                  type="submit"
                   aria-label="Open portfolio chat"
-                  onClick={() => openPortfolioChat("projects")}
                 >
                   <Send size={16} />
                 </button>
-              </div>
+              </form>
             </div>
 
             <a className="scroll-cue" href="#about">
