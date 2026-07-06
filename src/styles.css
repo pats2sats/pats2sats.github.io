@@ -367,7 +367,7 @@ img {
   padding: 0 20px 14px;
 }
 
-.prompt-row a,
+.prompt-row button,
 .stack-row span,
 .stack-cloud span {
   border: 1px solid var(--border);
@@ -378,20 +378,21 @@ img {
   font-weight: 800;
 }
 
-.prompt-row a {
+.prompt-row button {
   padding: 7px 14px;
+  cursor: pointer;
   transition:
     border-color 180ms ease,
     color 180ms ease,
     transform 120ms ease;
 }
 
-.prompt-row a:hover {
+.prompt-row button:hover {
   border-color: var(--accent);
   color: var(--text);
 }
 
-.prompt-row a:active {
+.prompt-row button:active {
   transform: scale(0.95);
 }
 
@@ -413,20 +414,22 @@ img {
   text-align: left;
 }
 
-.fake-input a {
+.fake-input button {
   display: grid;
   place-items: center;
   width: 32px;
   height: 32px;
+  border: 0;
   border-radius: 999px;
   background: var(--accent);
   color: #fff;
+  cursor: pointer;
   transition:
     opacity 180ms ease,
     transform 180ms ease;
 }
 
-.fake-input a:hover {
+.fake-input button:hover {
   opacity: 0.9;
   transform: scale(1.05);
 }

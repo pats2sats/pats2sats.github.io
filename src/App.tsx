@@ -19,6 +19,15 @@ type DemoSource = {
   type: "video" | "iframe";
   src: string;
 };
+type ChatbaseApi = {
+  open?: () => void;
+};
+
+declare global {
+  interface Window {
+    chatbase?: ChatbaseApi;
+  }
+}
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -178,6 +187,15 @@ function getInitialTheme(): Theme {
   return "dark";
 }
 
+function openPortfolioChat(fallbackHash: string) {
+  if (window.chatbase?.open) {
+    window.chatbase.open();
+    return;
+  }
+
+  window.location.hash = fallbackHash;
+}
+
 function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -297,15 +315,29 @@ function App() {
               </div>
 
               <div className="prompt-row">
-                <a href="#projects">Ask about personal projects</a>
-                <a href="#about">Ask about professional employment</a>
+                <button
+                  type="button"
+                  onClick={() => openPortfolioChat("projects")}
+                >
+                  Ask about personal projects
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openPortfolioChat("about")}
+                >
+                  Ask about professional employment
+                </button>
               </div>
 
               <div className="fake-input">
                 <span>Ask about personal projects or professional employment...</span>
-                <a href="#projects" aria-label="Jump to projects">
+                <button
+                  type="button"
+                  aria-label="Open portfolio chat"
+                  onClick={() => openPortfolioChat("projects")}
+                >
                   <Send size={16} />
-                </a>
+                </button>
               </div>
             </div>
 
