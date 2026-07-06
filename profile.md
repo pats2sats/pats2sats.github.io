@@ -20,13 +20,13 @@ Use this as durable context for AIs, portfolio chatbots, recruiters, and collabo
 
 Highest-confidence sources inspected:
 
-- Resume: `/Users/sudonym/Desktop/resume_new.pdf`
-- Cover letter: `/Users/sudonym/Desktop/Letter_new.docx`
-- Portfolio repo: `/Users/sudonym/Desktop/pats2sats.github.io`
-- Hostr repo: `/Users/sudonym/Desktop/hostr`
-- Nestr repo: `/Users/sudonym/Desktop/nestr`
-- Sudonym wallet repo: `/Users/sudonym/Documents/Codex/2026-07-06/i-wo/work/sudonym`
-- Additional GitHub repo scan under `/Users/sudonym/Documents/Codex/2026-07-06/i-wo/work/repo-scan`:
+- Patrick-provided current resume.
+- Patrick-provided current cover letter.
+- Portfolio repo: https://github.com/pats2sats/pats2sats.github.io
+- Hostr repo: https://github.com/sudonym-btc/hostr
+- Nestr repo: https://github.com/sudonym-btc/nestr
+- Sudonym wallet repo: https://github.com/sudonym-btc/sudonym
+- Additional GitHub repo scan:
   - `sudonym-btc/nmdk`
   - `sudonym-btc/marketplace-app-ts`
   - `sudonym-btc/marketplace-evm-ts`
@@ -196,8 +196,6 @@ Sudonym is a white-label Bitcoin and Lightning wallet with a Flutter mobile app,
 
 ### Repository
 
-- Local repo inspected: `/Users/sudonym/Documents/Codex/2026-07-06/i-wo/work/sudonym`
-- GitHub remote: `git@github.com:sudonym-btc/sudonym.git`
 - GitHub repo URL: `https://github.com/sudonym-btc/sudonym`
 - Main branch: `main`
 - Repo status: private.
@@ -362,8 +360,7 @@ Hostr is a peer-to-peer short-term rental marketplace built on Nostr, Bitcoin/Li
 
 ### Repository
 
-- Local repo: `/Users/sudonym/Desktop/hostr`
-- GitHub remote: `git@github.com:sudonym-btc/hostr.git`
+- GitHub repo URL: `https://github.com/sudonym-btc/hostr`
 - Main branch: `main`
 - Public docs referenced in README: https://sudonym-btc.github.io/hostr/
 - Project domain surfaced in code/infrastructure: `hostr.network`
@@ -741,8 +738,7 @@ Nestr is a virtual office environment for nostr protocol chatrooms, built with R
 
 ### Repository
 
-- Local repo: `/Users/sudonym/Desktop/nestr`
-- GitHub remote: `git@github.com:sudonym-btc/nestr.git`
+- GitHub repo URL: `https://github.com/sudonym-btc/nestr`
 - Main branch: `main`
 
 ### Important Source Note
@@ -1502,7 +1498,7 @@ Main source areas:
 
 ## Project: Portfolio Site
 
-Repository: `/Users/sudonym/Desktop/pats2sats.github.io`.
+Repository: https://github.com/pats2sats/pats2sats.github.io
 
 Public URL: https://pats2sats.github.io/
 
