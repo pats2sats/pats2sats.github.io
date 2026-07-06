@@ -81,6 +81,8 @@ const stack = [
   "Security",
 ];
 
+const githubAvatarSrc = "/assets/patrick-github-avatar.jpg";
+
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") {
     return "dark";
@@ -169,10 +171,14 @@ function App() {
       <main>
         <section id="home" className="hero section">
           <div className="hero-content">
-            <div className="avatar-ring" aria-hidden="true">
-              <div className="avatar-mark">
-                <span>P2S</span>
-              </div>
+            <div className="avatar-ring">
+              <img
+                className="avatar-photo"
+                src={githubAvatarSrc}
+                alt="pats2sats GitHub avatar"
+                width="460"
+                height="460"
+              />
             </div>
 
             <h1>
@@ -221,10 +227,16 @@ function App() {
             </article>
 
             <article className="about-tile portrait-tile">
-              <div className="portrait-mark" aria-label="pats2sats monogram">
-                <span>P2S</span>
+              <img
+                className="portrait-photo"
+                src={githubAvatarSrc}
+                alt="pats2sats GitHub avatar"
+                width="460"
+                height="460"
+              />
+              <div className="portrait-caption">
                 <strong>pats2sats</strong>
-                <small>self-sovereign product engineering</small>
+                <span>self-sovereign product engineering</span>
               </div>
             </article>
 
@@ -335,18 +347,11 @@ function ProjectVisual({ variant }: { variant: ProjectVariant }) {
     return (
       <div className="project-visual hostr-visual" aria-label="Hostr app preview">
         <img
-          className="desktop-shot"
-          src="/assets/hostr-explore.png"
-          alt="Hostr desktop explore screen"
-          width="1400"
-          height="909"
-        />
-        <img
-          className="phone-shot"
-          src="/assets/hostr-listing.png"
-          alt="Hostr mobile listing screen"
-          width="414"
-          height="900"
+          className="project-shot"
+          src="/assets/hostr-listing-real.png"
+          alt="Hostr listing detail screen"
+          width="1600"
+          height="1039"
         />
       </div>
     );
@@ -355,41 +360,26 @@ function ProjectVisual({ variant }: { variant: ProjectVariant }) {
   if (variant === "nestr") {
     return (
       <div className="project-visual nestr-visual" aria-label="Nestr office preview">
-        <div className="office-map">
-          <span className="desk desk-a" />
-          <span className="desk desk-b" />
-          <span className="desk desk-c" />
-          <span className="desk desk-d" />
-          <span className="avatar-dot dot-a" />
-          <span className="avatar-dot dot-b" />
-          <span className="avatar-dot dot-c" />
-          <span className="room-label">NIP-29 room</span>
-        </div>
-        <div className="chat-rail">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
+        <img
+          className="project-shot"
+          src="/assets/nestr-office-real.png"
+          alt="Nestr spatial office screen"
+          width="1440"
+          height="960"
+        />
       </div>
     );
   }
 
   return (
     <div className="project-visual evolut-visual" aria-label="Evolut system preview">
-      <div className="system-lane">
-        <span>Discover</span>
-        <strong>Inputs</strong>
-      </div>
-      <div className="system-lane">
-        <span>Shape</span>
-        <strong>Signals</strong>
-      </div>
-      <div className="system-lane">
-        <span>Ship</span>
-        <strong>Product</strong>
-      </div>
-      <div className="system-pulse" />
+      <img
+        className="project-shot"
+        src="/assets/evolut-demo-real.png"
+        alt="Evolut demo dashboard screen"
+        width="1600"
+        height="999"
+      />
     </div>
   );
 }

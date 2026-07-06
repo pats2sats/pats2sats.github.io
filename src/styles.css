@@ -214,30 +214,13 @@ img {
   box-shadow: none;
 }
 
-.avatar-mark {
-  display: grid;
-  place-items: center;
+.avatar-photo {
   width: 142px;
   height: 142px;
   border-radius: 999px;
-  background:
-    linear-gradient(135deg, rgba(143, 108, 255, 0.38), transparent 48%),
-    linear-gradient(315deg, rgba(255, 79, 175, 0.28), transparent 48%),
-    var(--bg-soft);
-  color: var(--text);
-  box-shadow: inset 0 0 0 1px var(--border);
-}
-
-.avatar-mark span {
-  font-size: 2.4rem;
-  font-weight: 950;
-}
-
-.avatar-mark small {
-  margin-top: -26px;
-  color: var(--accent);
-  font-size: 0.7rem;
-  font-weight: 900;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
 }
 
 .kicker,
@@ -395,48 +378,49 @@ img {
 }
 
 .portrait-tile {
+  position: relative;
   grid-row: span 2;
   display: grid;
   place-items: center;
   padding: 28px;
+  overflow: hidden;
   background:
     radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1.4px),
     var(--panel);
   background-size: 28px 28px, auto;
 }
 
-.portrait-mark {
-  display: grid;
-  gap: 8px;
-  place-items: center;
+.portrait-photo {
   width: min(100%, 280px);
   aspect-ratio: 1;
-  padding: 28px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background:
-    linear-gradient(135deg, rgba(143, 108, 255, 0.38), transparent 45%),
-    linear-gradient(315deg, rgba(255, 79, 175, 0.22), transparent 45%),
-    color-mix(in srgb, var(--bg-soft) 90%, transparent);
-  text-align: center;
+  object-fit: cover;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
 }
 
-.portrait-mark span {
-  background: linear-gradient(90deg, var(--blue), var(--green), var(--pink));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: 4rem;
-  font-weight: 950;
+.portrait-caption {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  display: grid;
+  gap: 3px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-strong);
+  text-align: left;
+  box-shadow: 0 18px 45px var(--shadow);
+  backdrop-filter: blur(18px);
 }
 
-.portrait-mark strong {
+.portrait-caption strong {
   font-size: 1rem;
 }
 
-.portrait-mark small {
-  max-width: 12rem;
+.portrait-caption span {
   color: var(--muted);
+  font-size: 0.76rem;
   font-weight: 800;
   line-height: 1.35;
 }
@@ -554,6 +538,8 @@ img {
 
 .project-visual {
   position: relative;
+  display: grid;
+  place-items: stretch;
   min-height: 360px;
   margin: 10px;
   overflow: hidden;
@@ -562,167 +548,23 @@ img {
 }
 
 .hostr-visual {
-  background:
-    linear-gradient(135deg, rgba(143, 108, 255, 0.16), rgba(255, 79, 175, 0.14)),
-    #0e0d16;
+  background: #0e0d16;
 }
 
-.desktop-shot {
-  position: absolute;
-  right: 7%;
-  bottom: 18%;
-  width: 78%;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 14px;
-  box-shadow: 0 26px 64px rgba(0, 0, 0, 0.4);
-}
-
-.phone-shot {
-  position: absolute;
-  bottom: -15%;
-  left: 8%;
-  width: 28%;
-  min-width: 118px;
-  border: 7px solid #0c0b12;
-  border-radius: 20px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.46);
+.project-shot {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .nestr-visual {
-  display: grid;
-  grid-template-columns: 1fr 140px;
-  gap: 12px;
-  padding: 18px;
-  background:
-    linear-gradient(90deg, rgba(143, 108, 255, 0.13) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    #0d1118;
-  background-size: 34px 34px;
-}
-
-.office-map {
-  position: relative;
-  min-height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.desk,
-.avatar-dot {
-  position: absolute;
-  border-radius: 6px;
-}
-
-.desk {
-  width: 74px;
-  height: 42px;
-  background: rgba(244, 162, 97, 0.26);
-  border: 1px solid rgba(244, 162, 97, 0.5);
-}
-
-.desk-a {
-  top: 18%;
-  left: 15%;
-}
-
-.desk-b {
-  top: 28%;
-  right: 16%;
-}
-
-.desk-c {
-  bottom: 24%;
-  left: 22%;
-}
-
-.desk-d {
-  right: 18%;
-  bottom: 17%;
-}
-
-.avatar-dot {
-  width: 28px;
-  height: 28px;
-  border: 3px solid #12161a;
-  background: var(--green);
-  box-shadow: 0 0 0 7px rgba(94, 224, 181, 0.16);
-}
-
-.dot-a {
-  top: 36%;
-  left: 44%;
-}
-
-.dot-b {
-  bottom: 30%;
-  left: 40%;
-  background: var(--blue);
-}
-
-.dot-c {
-  top: 18%;
-  right: 34%;
-  background: var(--pink);
-}
-
-.room-label {
-  position: absolute;
-  right: 18px;
-  bottom: 16px;
-  color: rgba(246, 241, 232, 0.68);
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-.chat-rail {
-  display: grid;
-  align-content: end;
-  gap: 12px;
-}
-
-.chat-rail span {
-  height: 56px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
+  background: #0d1118;
 }
 
 .evolut-visual {
-  display: grid;
-  gap: 16px;
-  align-content: center;
-  padding: 30px;
-  background:
-    linear-gradient(90deg, rgba(143, 108, 255, 0.13) 1px, transparent 1px),
-    linear-gradient(rgba(255, 79, 175, 0.1) 1px, transparent 1px),
-    #120d18;
-  background-size: 42px 42px;
-}
-
-.system-lane {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 18px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.system-lane span {
-  color: rgba(246, 241, 232, 0.68);
-}
-
-.system-lane strong {
-  color: #f6f1e8;
-}
-
-.system-pulse {
-  width: 74%;
-  height: 7px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), var(--green), var(--blue));
+  background: #120d18;
 }
 
 .stack-section {
@@ -870,13 +712,9 @@ img {
     height: 128px;
   }
 
-  .avatar-mark {
+  .avatar-photo {
     width: 116px;
     height: 116px;
-  }
-
-  .avatar-mark span {
-    font-size: 2rem;
   }
 
   .hero h1 {
@@ -953,28 +791,14 @@ img {
     margin: 8px;
   }
 
-  .desktop-shot {
-    right: -15%;
-    bottom: 28%;
-    width: 102%;
+  .project-shot {
+    min-height: 320px;
   }
 
-  .phone-shot {
-    bottom: -12%;
-    left: 7%;
-    width: 36%;
-  }
-
-  .nestr-visual {
-    grid-template-columns: 1fr;
-  }
-
-  .chat-rail {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .chat-rail span {
-    height: 36px;
+  .portrait-caption {
+    right: 18px;
+    bottom: 18px;
+    max-width: calc(100% - 36px);
   }
 
   .site-footer {
