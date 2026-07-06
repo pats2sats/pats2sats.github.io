@@ -682,6 +682,16 @@ img {
   background: #120d18;
 }
 
+.sudonym-visual {
+  background: #15172d;
+}
+
+.sudonym-visual .project-shot {
+  padding: 18px;
+  object-fit: contain;
+  object-position: center;
+}
+
 .stack-section {
   padding-bottom: 118px;
 }

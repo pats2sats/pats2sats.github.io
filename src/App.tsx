@@ -11,7 +11,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 type Theme = "dark" | "light";
-type ProjectVariant = "hostr" | "nestr" | "evolut";
+type ProjectVariant = "hostr" | "nestr" | "evolut" | "sudonym";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -50,19 +50,30 @@ const projects: Array<{
     link: "https://github.com/sudonym-btc/nestr",
     linkLabel: "Repository",
     status: "Prototype",
-    stack: ["React", "TypeScript", "Phaser", "NIP-29", "WebRTC"],
+    stack: ["React", "TypeScript", "Three.js", "NIP-29", "WebRTC"],
     variant: "nestr",
   },
   {
     name: "Evolut",
-    eyebrow: "Product systems",
+    eyebrow: "LinkedIn SaaS",
     description:
-      "A product-engineering track for evolving bitcoin-native workflows into practical tools, experiments, and user-facing product surfaces.",
+      "A SaaS platform for LinkedIn marketing automation with an Angular dashboard, NestJS API, Puppeteer workers, GCP infrastructure, Stripe billing, Zapier, and Electron builds.",
     link: "https://github.com/pats2sats",
     linkLabel: "GitHub",
-    status: "In progress",
-    stack: ["Bitcoin", "Automation", "UX", "Agents", "TypeScript"],
+    status: "Archived",
+    stack: ["Angular", "NestJS", "Puppeteer", "GCP", "Stripe"],
     variant: "evolut",
+  },
+  {
+    name: "Sudonym",
+    eyebrow: "Lightning wallet",
+    description:
+      "A white-label Bitcoin and Lightning wallet with a Flutter app, NestJS API, Core Lightning node services, LNURL flows, BOLT card support, and app-store pipelines.",
+    link: "https://github.com/sudonym-btc/sudonym",
+    linkLabel: "Private repo",
+    status: "Demo",
+    stack: ["Flutter", "NestJS", "Lightning", "LNURL", "GCP"],
+    variant: "sudonym",
   },
 ];
 
@@ -195,6 +206,7 @@ function App() {
                 <a href="#projects">Hostr</a>
                 <a href="#projects">Nestr</a>
                 <a href="#projects">Evolut</a>
+                <a href="#projects">Sudonym</a>
                 <a href="#stack">Skills</a>
               </div>
 
@@ -268,10 +280,11 @@ function App() {
         <section id="projects" className="section projects-section">
           <div className="section-heading">
             <p className="kicker">Featured projects</p>
-            <h2>Three active product tracks</h2>
+            <h2>Four product systems</h2>
             <p>
               A focused selection across marketplace infrastructure, Nostr
-              social spaces, and product systems.
+              social spaces, automation systems, and Lightning wallet
+              infrastructure.
             </p>
           </div>
 
@@ -372,14 +385,28 @@ function ProjectVisual({ variant }: { variant: ProjectVariant }) {
     );
   }
 
+  if (variant === "evolut") {
+    return (
+      <div className="project-visual evolut-visual" aria-label="Evolut system preview">
+        <img
+          className="project-shot"
+          src="/assets/evolut-demo-real.png"
+          alt="Evolut demo dashboard screen"
+          width="1600"
+          height="999"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="project-visual evolut-visual" aria-label="Evolut system preview">
+    <div className="project-visual sudonym-visual" aria-label="Sudonym wallet preview">
       <img
         className="project-shot"
-        src="/assets/evolut-demo-real.png"
-        alt="Evolut demo dashboard screen"
-        width="1600"
-        height="999"
+        src="/assets/sudonym-wallet-real.jpeg"
+        alt="Sudonym Lightning wallet screens"
+        width="1800"
+        height="958"
       />
     </div>
   );
