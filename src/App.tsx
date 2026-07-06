@@ -82,6 +82,7 @@ const stack = [
 ];
 
 const githubAvatarSrc = "/assets/patrick-github-avatar.jpg";
+const contactEmail = "patrick.geyer1@gmail.com";
 
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") {
@@ -131,7 +132,7 @@ function App() {
             ))}
           </div>
 
-          <a className="contact-button" href="mailto:paco@walletofsatoshi.com">
+          <a className="contact-button" href={`mailto:${contactEmail}`}>
             <Calendar size={16} />
             <span>Contact</span>
           </a>
@@ -159,7 +160,7 @@ function App() {
               </a>
             ))}
             <a
-              href="mailto:paco@walletofsatoshi.com"
+              href={`mailto:${contactEmail}`}
               onClick={() => setMenuOpen(false)}
             >
               Contact
@@ -175,19 +176,19 @@ function App() {
               <img
                 className="avatar-photo"
                 src={githubAvatarSrc}
-                alt="pats2sats GitHub avatar"
+                alt="Patrick Geyer GitHub avatar"
                 width="460"
                 height="460"
               />
             </div>
 
             <h1>
-              Hi, I&apos;m <span>pats2sats</span>
+              Hi, I&apos;m <span>Patrick Geyer</span>
             </h1>
 
             <div className="question-panel" aria-label="Portfolio highlights">
               <div className="panel-log">
-                <p className="prompt">Ask me anything about pats2sats...</p>
+                <p className="prompt">Ask me anything about Patrick...</p>
               </div>
 
               <div className="prompt-row">
@@ -198,7 +199,7 @@ function App() {
               </div>
 
               <div className="fake-input">
-                <span>Ask anything about pats2sats...</span>
+                <span>Ask anything about Patrick...</span>
                 <a href="#projects" aria-label="Jump to projects">
                   <Send size={16} />
                 </a>
@@ -230,12 +231,12 @@ function App() {
               <img
                 className="portrait-photo"
                 src={githubAvatarSrc}
-                alt="pats2sats GitHub avatar"
+                alt="Patrick Geyer GitHub avatar"
                 width="460"
                 height="460"
               />
               <div className="portrait-caption">
-                <strong>pats2sats</strong>
+                <strong>Patrick Geyer</strong>
                 <span>self-sovereign product engineering</span>
               </div>
             </article>
@@ -319,9 +320,9 @@ function App() {
       <footer id="other" className="site-footer">
         <a href="https://github.com/pats2sats" target="_blank" rel="noreferrer">
           <GitHubMark />
-          <span>github.com/pats2sats</span>
+          <span>GitHub</span>
         </a>
-        <span>pats2sats.github.io</span>
+        <span>Patrick Geyer</span>
       </footer>
     </>
   );
