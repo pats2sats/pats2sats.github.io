@@ -23,72 +23,113 @@ const navItems = [
 
 const projects: Array<{
   name: string;
-  eyebrow: string;
   description: string;
   link: string;
   linkLabel: string;
-  status: string;
   stack: string[];
   variant: ProjectVariant;
 }> = [
   {
     name: "Hostr",
-    eyebrow: "Bitcoin stays",
     description:
       "Peer-to-peer accommodation built on Nostr and Lightning, with a Flutter app, SDK, CLI, and MCP surface for AI-assisted booking workflows.",
     link: "https://github.com/sudonym-btc/hostr",
     linkLabel: "Repository",
-    status: "Shipping",
     stack: ["Flutter", "Dart", "Nostr", "Lightning", "MCP"],
     variant: "hostr",
   },
   {
     name: "Evolut",
-    eyebrow: "LinkedIn SaaS",
     description:
       "A SaaS platform for LinkedIn marketing automation with an Angular dashboard, NestJS API, Puppeteer workers, GCP infrastructure, Stripe billing, Zapier, and Electron builds.",
     link: "https://github.com/pats2sats",
     linkLabel: "GitHub",
-    status: "Archived",
     stack: ["Angular", "NestJS", "Puppeteer", "GCP", "Stripe"],
     variant: "evolut",
   },
   {
     name: "Sudonym",
-    eyebrow: "Lightning wallet",
     description:
       "A white-label Bitcoin and Lightning wallet with a Flutter app, NestJS API, Core Lightning node services, LNURL flows, BOLT card support, and app-store pipelines.",
     link: "https://github.com/sudonym-btc/sudonym",
     linkLabel: "Private repo",
-    status: "Demo",
     stack: ["Flutter", "NestJS", "Lightning", "LNURL", "GCP"],
     variant: "sudonym",
   },
   {
     name: "Nestr",
-    eyebrow: "Nostr office",
-    description:
-      "A NIP-29 spatial-office prototype where relay groups become shared rooms with deterministic maps, live chat, presence, and WebRTC call pressure modeling.",
+    description: "A virtual office environment for nostr protocol chatrooms",
     link: "https://github.com/sudonym-btc/nestr",
     linkLabel: "Repository",
-    status: "Prototype",
     stack: ["React", "TypeScript", "Three.js", "NIP-29", "WebRTC"],
     variant: "nestr",
   },
 ];
 
 const stack = [
+  "TypeScript",
+  "JavaScript",
+  "Node.js",
+  "NestJS",
+  "React",
+  "Angular",
+  "Flutter",
+  "Dart",
+  "Go",
+  "Python",
+  "Google Cloud",
+  "AWS",
+  "GKE",
+  "Kubernetes",
+  "Docker",
+  "Docker Compose",
+  "Terraform",
+  "Cloud IAM",
+  "Cloud Build",
+  "GitHub Actions",
+  "CI/CD",
+  "Artifact Registry",
+  "Cloud KMS",
+  "Secret Manager",
+  "Cloud Pub/Sub",
+  "Cloud Storage",
+  "Cloud DNS",
+  "Serverless",
+  "App Engine",
+  "Firebase",
+  "MySQL",
+  "Sequelize",
+  "GraphQL",
+  "REST APIs",
+  "WebSockets",
+  "Puppeteer",
+  "Electron",
+  "Stripe",
+  "SendGrid",
+  "Zapier",
+  "iOS",
+  "Android",
+  "App Store",
+  "Google Play",
   "Bitcoin",
   "Lightning",
+  "LNURL",
+  "Core Lightning",
+  "LND",
   "Nostr",
-  "Dart",
-  "Flutter",
-  "TypeScript",
-  "React",
-  "MCP",
+  "Nostr Tools",
+  "Cashu",
+  "Rootstock",
+  "EVM Escrow",
+  "Solidity",
+  "ERC-4337",
+  "Boltz",
+  "H3",
+  "Three.js",
   "WebRTC",
+  "MCP",
   "OpenAI",
-  "Product",
+  "Product Engineering",
   "Security",
 ];
 
@@ -290,8 +331,6 @@ function App() {
                 <div className="project-copy">
                   <div className="project-meta">
                     <span>{String(index + 1).padStart(2, "0")}</span>
-                    <span>{project.eyebrow}</span>
-                    <span>{project.status}</span>
                   </div>
                   <h3>{project.name}</h3>
                   <p>{project.description}</p>

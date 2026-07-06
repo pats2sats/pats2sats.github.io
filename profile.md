@@ -11,7 +11,7 @@ Use this as durable context for AIs, portfolio chatbots, recruiters, and collabo
 - Public portfolio: https://pats2sats.github.io/
 - GitHub profile: https://github.com/pats2sats
 - Patrick is a backend-leaning full-stack engineer with 10+ years of JavaScript/Node.js experience and newer production work in Dart/Flutter, React, Angular, Nostr, Lightning, Cashu, EVM escrow, account abstraction, Terraform, Docker, Google Cloud, and Go.
-- When asked about main portfolio projects, lead with Hostr, Nestr, Evolut, and Sudonym. When asked about broader GitHub work, include the NMDK marketplace stack and Zap CLI.
+- When asked about main portfolio projects, lead with Hostr, Evolut, Sudonym, and Nestr. When asked about broader GitHub work, include the NMDK marketplace stack and Zap CLI.
 - When unsure, say what is source-backed and what needs Patrick confirmation.
 - Do not invent metrics, revenue, user counts, customer names, or claims about current production status unless they are explicitly listed here.
 - Do not reveal credentials, tokens, service account files, private keys, API keys, private customer data, or copied source code from private repositories.
@@ -80,6 +80,25 @@ Patrick is a backend-leaning full-stack engineer with 10+ years of JavaScript an
 - Cryptography and Bitcoin-adjacent systems: Lightning, LNURL, Nostr, Rootstock.
 - Marketplace/payment protocol systems from repo scan: Cashu, P2PK proofs, EVM escrow, ERC-4337 account abstraction, Boltz swaps, H3 geospatial tags, Nostr marketplace event/runtime boundaries, local Bitcoin/Lightning/EVM regtest stacks.
 - AI and ML: TensorFlow certified; university study in Data Science and AI.
+
+### Expanded Skill Catalog from Project Repos
+
+Use this list when answering broad skill questions. It consolidates source-backed skills from Hostr, Evolut, Sudonym, Nestr, NMDK, Zap, the resume, and the cover letter.
+
+- Languages: TypeScript, JavaScript, Dart, Go, Python, Solidity, SQL, HTML, CSS/SCSS.
+- Backend/API: Node.js, NestJS, Express, REST APIs, GraphQL, Swagger/OpenAPI, WebSockets, Socket.IO, JWT, class-validator/class-transformer, cache-manager, background workers, task queues, webhook systems.
+- Frontend: React, Angular, Angular Material, Vite, Tailwind CSS, Radix UI, shadcn-style components, NGRX, Chart.js, D3, ngx-charts, Storybook, SCSS, responsive UI implementation.
+- Mobile/desktop: Flutter, Dart, iOS, Android, Codemagic, TestFlight/App Store workflows, Google Play workflows, Electron, electron-builder, auto-update publishing.
+- Cloud: Google Cloud, AWS, GKE, Kubernetes, App Engine Flexible, Cloud Build, Cloud IAM, Cloud KMS, Secret Manager, Cloud Pub/Sub, Cloud Storage, Cloud SQL, Cloud DNS, Cloud Logging, Cloud Monitoring, Cloud Trace, Artifact Registry, Google Container Registry, Firebase Auth/Messaging/Storage, Serverless, Cognito.
+- Infrastructure/DevOps: Docker, Docker Compose, Terraform, Google Cloud Deployment Manager, Kubernetes manifests, Helm-style builders, minikube, Nginx, ingress-nginx, cert-manager, LetsEncrypt, local TLS/CA setup, GitHub Actions, GitHub Pages, CI/CD, path-filtered CI, image builds, deploy automation, release artifacts.
+- Data/storage: MySQL, Sequelize, sequelize-typescript, Cloud SQL Proxy, Redis, IndexedDB, encrypted local browser storage, shared model generation, schema sync/migration workflows.
+- Bitcoin/Lightning: Bitcoin Core, Core Lightning, c-lightning-rest, LND, LNbits, Lightning Network operations, LNURL, BOLT11 invoices, lightning addresses, BOLT card/NFC flows, Nostr Wallet Connect, Bitcoin/Lightning regtest, channel/liquidity setup.
+- Nostr/protocols: Nostr, nostr-tools, NIP-07, NIP-17, NIP-29, NIP-42, NIP-44-style payload boundaries, NIP-46/Nostr Connect, NIP-51, NIP-65, NIP-66, relay auth, relay discovery, nostr-rs-relay, Blossom uploads, marketplace event/runtime boundaries.
+- Crypto/escrow: Cashu, Cashu Nuts, P2PK-locked proofs, EVM escrow, Rootstock, Arbitrum-style local chains, Solidity, Hardhat, Anvil, viem, permissionless, ERC-4337 account abstraction, paymasters, Pimlico Alto, Boltz swap orchestration, Uniswap V3 local routing, escrow contract ABI/artifact packaging.
+- Automation/integrations: Puppeteer, headless Chromium, Xvfb, proxy/VPN-aware automation, Stripe, SendGrid, Zapier Platform, SMTP email, Firebase Admin, Google Cloud Language, GitHub API, package-manager metadata parsing.
+- Testing/quality: Playwright, Vitest, Jest, Mocha, Chai, Supertest, Karma/Jasmine, Protractor, Flutter tests, bloc_test, integration tests against Docker stacks, deterministic demo capture.
+- Documentation/DX: TypeDoc, typedoc-plugin-markdown, Next.js, Fumadocs, MDX, Retype, package-owned reference docs, CLI UX, MCP server/tool design, Codex plugin packaging, skill authoring.
+- Product/operational: SaaS billing, white-label builds, app-store pipelines, marketplace checkout flows, wallet UX, order-flow routing, exchange integrations, tax balance calculations, Lightning node operations, liquidity management, startup/product ownership.
 
 ### Employment
 
@@ -714,7 +733,7 @@ Project skills:
 
 ### One-Line Summary
 
-Nestr is a Nostr spatial-office prototype where NIP-29 relay groups become shared office rooms with deterministic 3D maps, live group chat, presence, signer-based auth, encrypted Nostr Connect session restoration, and WebRTC proximity-call modeling.
+Nestr is a virtual office environment for nostr protocol chatrooms, built with React, TypeScript, Three.js, signer-based auth, encrypted Nostr Connect session restoration, deterministic 3D maps, live group chat, presence, and WebRTC proximity-call modeling.
 
 ### Project Skills
 
@@ -1491,7 +1510,7 @@ Purpose:
 
 - One-page GitHub Pages portfolio for Patrick Geyer.
 - Inspired by the style and interaction pattern of https://www.pszostak.pl/.
-- Features Hostr, Nestr, Evolut, and Sudonym.
+- Features Hostr, Evolut, Sudonym, and Nestr.
 - Contact email: `patrick.geyer1@gmail.com`.
 - Uses Patrick's GitHub avatar.
 - Uses real project visuals where available.
@@ -1583,7 +1602,7 @@ The AI can safely say:
 - Hostr is a Nostr-based short-term rental marketplace prototype with Flutter, Dart, Terraform/GCP, Docker, Nostr relay services, Blossom, Lightning/Bitcoin local stacks, EVM escrow contracts, and MCP/AI automation.
 - NMDK is a Nostr marketplace development kit/project family with TypeScript protocol packages, EVM escrow/payment drivers, Cashu escrow/payment drivers, H3 location packages, Solidity contract artifacts, local Docker regtest stacks, a React marketplace demo app, and generated documentation.
 - The NMDK marketplace stack includes experience with Cashu, P2PK escrow proofs, Boltz swap orchestration, ERC-4337 account abstraction, viem, permissionless, Anvil, Rootstock/Arbitrum-style local chains, nostr-rs-relay, LND, LNbits, Alby Hub, Blossom, TypeDoc, Fumadocs, and GitHub Pages docs publishing.
-- Nestr is a React/TypeScript/Three.js Nostr spatial-office prototype using NIP-29, NIP-46, NIP-42, WebRTC concepts, encrypted IndexedDB session storage, and deterministic 3D rooms.
+- Nestr is a virtual office environment for nostr protocol chatrooms using React, TypeScript, Three.js, NIP-29, NIP-46, NIP-42, WebRTC concepts, encrypted IndexedDB session storage, and deterministic 3D rooms.
 - Evolut was a LinkedIn marketing automation SaaS built with Angular, NestJS/Node, Puppeteer, MySQL/Sequelize, Firebase, GCP, Docker, Cloud Build, Kubernetes/App Engine, Stripe, SendGrid, Zapier, and Electron.
 - Sudonym was a white-label Bitcoin and Lightning wallet built with Flutter, Dart, NestJS, TypeScript, MySQL/Sequelize, Firebase, Core Lightning, c-lightning-rest, LNURL, BOLT card/NFC support, Google Cloud Deployment Manager, GKE, Cloud Build, and Codemagic app-store pipelines.
 - Zap is a Go CLI for Bitcoin/Lightning maintainer tipping with Nostr Wallet Connect, LNURL, GitHub/package metadata analysis, SMTP-based lightning-gift emails, terminal UI packages, and Homebrew distribution.
