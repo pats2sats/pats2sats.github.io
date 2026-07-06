@@ -1547,6 +1547,7 @@ Current visual assets:
 - Evolut screenshot extracted from demo video.
 - Evolut demo opens as a Google Drive preview player because the source video is a 2.2 GB Drive file named `Evolut Demo.mov`.
 - Sudonym screenshot from the Sudonym homepage assets.
+- Sudonym demo video at `/assets/sudonym-linkedin-demo.mp4`, sourced from Patrick's LinkedIn "bank/wallet app" post: `https://www.linkedin.com/posts/patrick-geyer-5489b660_releasing-a-bankwallet-app-very-soon-such-activity-7003216362433040384-zjgv`.
 - GitHub avatar from GitHub avatar CDN.
 
 Featured project repo visibility in the portfolio:

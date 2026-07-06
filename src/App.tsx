@@ -75,6 +75,11 @@ const projects: Array<{
     link: "https://github.com/sudonym-btc/sudonym",
     linkLabel: "Private repo",
     repoPrivate: true,
+    demo: {
+      title: "Sudonym Wallet Demo",
+      type: "video",
+      src: "/assets/sudonym-linkedin-demo.mp4",
+    },
     stack: ["Flutter", "NestJS", "Lightning", "LNURL", "GCP"],
     variant: "sudonym",
   },
