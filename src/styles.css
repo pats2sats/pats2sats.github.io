@@ -478,19 +478,26 @@ img {
   transform: translateY(-3px);
 }
 
-.name-tile {
+.focus-tile {
   grid-row: span 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
   background: linear-gradient(135deg, var(--bg-soft), var(--card-border));
 }
 
-.name-tile span {
+.focus-tile h3 {
+  margin: 12px 0 14px;
   color: var(--text);
-  font-size: 3.1rem;
-  font-weight: 950;
+  font-size: 2.05rem;
+  line-height: 1.08;
+}
+
+.focus-tile p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
 }
 
 .portrait-tile {
@@ -507,8 +514,9 @@ img {
 }
 
 .portrait-photo {
-  width: min(100%, 280px);
-  aspect-ratio: 1;
+  width: 200px;
+  max-width: 100%;
+  height: 200px;
   border: 1px solid var(--border);
   border-radius: 999px;
   object-fit: cover;
@@ -814,7 +822,7 @@ img {
     grid-template-rows: auto;
   }
 
-  .name-tile,
+  .focus-tile,
   .portrait-tile,
   .text-tile {
     grid-row: auto;
@@ -895,13 +903,8 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .name-tile {
-    grid-template-columns: repeat(9, 1fr);
-    min-height: 116px;
-  }
-
-  .name-tile span {
-    font-size: 1.75rem;
+  .focus-tile {
+    min-height: 230px;
   }
 
   .portrait-tile {
@@ -909,10 +912,15 @@ img {
   }
 
   .text-tile,
+  .focus-tile,
   .status-tile,
   .signal-tile,
   .project-copy {
     padding: 22px;
+  }
+
+  .focus-tile h3 {
+    font-size: 1.9rem;
   }
 
   .text-tile h2,

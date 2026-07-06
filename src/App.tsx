@@ -43,17 +43,6 @@ const projects: Array<{
     variant: "hostr",
   },
   {
-    name: "Nestr",
-    eyebrow: "Nostr office",
-    description:
-      "A NIP-29 spatial-office prototype where relay groups become shared rooms with deterministic maps, live chat, presence, and WebRTC call pressure modeling.",
-    link: "https://github.com/sudonym-btc/nestr",
-    linkLabel: "Repository",
-    status: "Prototype",
-    stack: ["React", "TypeScript", "Three.js", "NIP-29", "WebRTC"],
-    variant: "nestr",
-  },
-  {
     name: "Evolut",
     eyebrow: "LinkedIn SaaS",
     description:
@@ -75,6 +64,17 @@ const projects: Array<{
     stack: ["Flutter", "NestJS", "Lightning", "LNURL", "GCP"],
     variant: "sudonym",
   },
+  {
+    name: "Nestr",
+    eyebrow: "Nostr office",
+    description:
+      "A NIP-29 spatial-office prototype where relay groups become shared rooms with deterministic maps, live chat, presence, and WebRTC call pressure modeling.",
+    link: "https://github.com/sudonym-btc/nestr",
+    linkLabel: "Repository",
+    status: "Prototype",
+    stack: ["React", "TypeScript", "Three.js", "NIP-29", "WebRTC"],
+    variant: "nestr",
+  },
 ];
 
 const stack = [
@@ -93,6 +93,7 @@ const stack = [
 ];
 
 const githubAvatarSrc = "/assets/patrick-github-avatar.jpg";
+const linkedinPortraitSrc = "/assets/patrick-linkedin-profile.jpg";
 const contactEmail = "patrick.geyer1@gmail.com";
 
 function getInitialTheme(): Theme {
@@ -226,25 +227,22 @@ function App() {
 
         <section id="about" className="section about-section">
           <div className="about-grid">
-            <article className="about-tile name-tile">
-              <span>P</span>
-              <span>A</span>
-              <span>T</span>
-              <span>S</span>
-              <span>2</span>
-              <span>S</span>
-              <span>A</span>
-              <span>T</span>
-              <span>S</span>
+            <article className="about-tile focus-tile">
+              <p className="tile-label">Scope</p>
+              <h3>Marketing, finance, cryptography</h3>
+              <p>
+                Startup systems, wallet infrastructure, and Nostr-native
+                product experiments.
+              </p>
             </article>
 
             <article className="about-tile portrait-tile">
               <img
                 className="portrait-photo"
-                src={githubAvatarSrc}
-                alt="Patrick Geyer GitHub avatar"
-                width="460"
-                height="460"
+                src={linkedinPortraitSrc}
+                alt="Patrick Geyer LinkedIn profile photo"
+                width="200"
+                height="200"
               />
               <div className="portrait-caption">
                 <strong>Patrick Geyer</strong>
@@ -279,11 +277,10 @@ function App() {
         <section id="projects" className="section projects-section">
           <div className="section-heading">
             <p className="kicker">Featured projects</p>
-            <h2>Four product systems</h2>
+            <h2>Startups and Projects</h2>
             <p>
-              A focused selection across marketplace infrastructure, Nostr
-              social spaces, automation systems, and Lightning wallet
-              infrastructure.
+              A focused selection of projects spreading from marketing to
+              finance to cryptography.
             </p>
           </div>
 
