@@ -256,7 +256,7 @@ img {
 .hero {
   display: grid;
   min-height: 96svh;
-  place-items: center;
+  place-items: start center;
   padding: 116px 0 52px;
 }
 
@@ -336,10 +336,12 @@ img {
 }
 
 .panel-log {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 298px;
   padding: 28px;
+  overflow-y: auto;
   text-align: center;
 }
 
@@ -357,6 +359,41 @@ img {
   color: color-mix(in srgb, var(--muted) 78%, transparent);
   font-size: 0.875rem;
   text-align: center;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+  min-height: 100%;
+}
+
+.chat-message {
+  max-width: min(82%, 520px);
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  text-align: left;
+  white-space: pre-line;
+  animation: fade-up 180ms ease both;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  border-color: color-mix(in srgb, var(--accent) 64%, var(--border));
+  background: linear-gradient(135deg, var(--accent), var(--gradient-start));
+  color: #fff;
+}
+
+.chat-message.assistant {
+  align-self: flex-start;
+  background: color-mix(in srgb, var(--bg-soft) 76%, transparent);
+  color: color-mix(in srgb, var(--text) 88%, var(--muted));
 }
 
 .prompt-row {
@@ -408,18 +445,21 @@ img {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
-.fake-input input {
+.fake-input textarea {
   flex: 1;
   min-width: 0;
+  max-height: 96px;
   border: 0;
   outline: 0;
   background: transparent;
   color: var(--muted);
   font: inherit;
+  line-height: 1.35;
+  resize: none;
   text-align: left;
 }
 
-.fake-input input::placeholder {
+.fake-input textarea::placeholder {
   color: var(--muted);
   opacity: 1;
 }
@@ -446,6 +486,12 @@ img {
 .fake-input button:hover {
   opacity: 0.9;
   transform: scale(1.05);
+}
+
+.fake-input button:disabled {
+  opacity: 0.35;
+  transform: none;
+  cursor: default;
 }
 
 .scroll-cue {

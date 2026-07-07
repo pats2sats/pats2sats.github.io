@@ -10,7 +10,7 @@ import {
   Sun,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type Theme = "dark" | "light";
 type ProjectVariant = "hostr" | "nestr" | "evolut" | "sudonym";
@@ -19,15 +19,11 @@ type DemoSource = {
   type: "video" | "iframe";
   src: string;
 };
-type ChatbaseApi = {
-  open?: () => void;
+type ChatMessage = {
+  id: number;
+  role: "user" | "assistant";
+  content: string;
 };
-
-declare global {
-  interface Window {
-    chatbase?: ChatbaseApi;
-  }
-}
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -173,6 +169,12 @@ const stack = [
 const githubAvatarSrc = "/assets/patrick-github-avatar.jpg";
 const linkedinPortraitSrc = "/assets/patrick-linkedin-profile.jpg";
 const contactEmail = "patrick.geyer1@gmail.com";
+const quickPrompts = [
+  "Ask about personal projects",
+  "Ask about professional employment",
+  "Skills",
+  "Contact",
+];
 
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") {
@@ -187,13 +189,61 @@ function getInitialTheme(): Theme {
   return "dark";
 }
 
-function openPortfolioChat(fallbackHash: string) {
-  if (window.chatbase?.open) {
-    window.chatbase.open();
-    return;
+function getPortfolioAnswer(question: string) {
+  const normalized = question.toLowerCase();
+
+  if (normalized.includes("hostr")) {
+    return "Hostr is Patrick's peer-to-peer short-term rental marketplace built around Nostr, Lightning, and self-custodial escrow ideas. The stack includes Flutter, Dart, a Dart SDK and CLI, Nostr event modeling, Solidity/Hardhat escrow contracts, Docker Compose, Terraform, Google Cloud, GitHub Actions, and an MCP surface for AI-assisted booking workflows.";
   }
 
-  window.location.hash = fallbackHash;
+  if (normalized.includes("nestr")) {
+    return "Nestr is a virtual office environment for Nostr protocol chatrooms. It uses React, TypeScript, Vite, Three.js, Nostr Tools, NIP-29 group concepts, NIP-46/Nostr Connect paths, encrypted IndexedDB/WebCrypto session restoration, presence, chat, and WebRTC proximity-call modeling.";
+  }
+
+  if (normalized.includes("sudonym") || normalized.includes("wallet")) {
+    return "Sudonym was a white-label Bitcoin and Lightning wallet. Patrick worked across the Flutter app, NestJS API, shared TypeScript/Dart models, Firebase auth, MySQL/Sequelize, GCP/GKE infrastructure, Cloud Build, Codemagic app-store pipelines, Core Lightning/c-lightning-rest, LNURL, BOLT11, and BOLT card/NFC flows.";
+  }
+
+  if (normalized.includes("evolut") || normalized.includes("marketing")) {
+    return "Evolut was Patrick's LinkedIn marketing automation SaaS. It combined an Angular dashboard, NestJS/Node API, Puppeteer worker infrastructure, MySQL/Sequelize, Firebase, GCP Pub/Sub and Storage, Cloud Build, GKE/App Engine, Docker, Stripe, SendGrid, Zapier, and Electron/white-label desktop builds.";
+  }
+
+  if (
+    normalized.includes("employment") ||
+    normalized.includes("professional") ||
+    normalized.includes("work") ||
+    normalized.includes("job")
+  ) {
+    return "Patrick's professional experience includes 21Bitcoin, CoinBurp, Sellar, and Majestic3. The strongest themes are Bitcoin exchange order-flow routing, backend/API development, database work, customer tax-balance calculations, REST API rebuilds, and earlier full-stack/email-marketing engineering.";
+  }
+
+  if (
+    normalized.includes("skill") ||
+    normalized.includes("stack") ||
+    normalized.includes("technology") ||
+    normalized.includes("tech")
+  ) {
+    return "Patrick's core stack is backend-leaning full-stack engineering: JavaScript, TypeScript, Node.js, NestJS, React, Angular, Flutter, Dart, Docker, Kubernetes/GKE, Terraform, Google Cloud, AWS, MySQL, Sequelize, WebSockets, Puppeteer, Stripe, SendGrid, Zapier, Bitcoin, Lightning, Nostr, EVM/Solidity, MCP, and app-store deployment.";
+  }
+
+  if (
+    normalized.includes("bitcoin") ||
+    normalized.includes("lightning") ||
+    normalized.includes("nostr") ||
+    normalized.includes("crypto")
+  ) {
+    return "Patrick has worked on Bitcoin exchange infrastructure, a custodial Lightning wallet, and newer self-sovereign Nostr marketplace experiments. Relevant technologies include Bitcoin, Lightning, Core Lightning, LNURL, BOLT11, Nostr, NIP-29, NIP-46, Cashu, Rootstock/EVM escrow, Solidity, Hardhat, ERC-4337-style account abstraction, and Boltz-oriented swap flows.";
+  }
+
+  if (normalized.includes("contact") || normalized.includes("email")) {
+    return `You can contact Patrick at ${contactEmail}. His portfolio is https://pats2sats.github.io/ and his GitHub profile is https://github.com/pats2sats.`;
+  }
+
+  if (normalized.includes("project") || normalized.includes("built")) {
+    return "A focused set of Patrick's projects: Hostr for Nostr-native accommodation, Sudonym for Bitcoin/Lightning wallet infrastructure, Evolut for marketing automation, and Nestr for virtual office chatrooms on Nostr. Broader open-source work also includes marketplace/NMDK packages around Cashu, EVM escrow, H3 geospatial tags, and local Bitcoin/Lightning/EVM stacks.";
+  }
+
+  return "I can answer best about Patrick's projects, jobs, skills, Bitcoin/Lightning/Nostr work, marketing automation work, and contact details. Try asking about Hostr, Sudonym, Evolut, Nestr, 21Bitcoin, or his cloud/backend stack.";
 }
 
 function App() {
@@ -201,6 +251,9 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDemo, setActiveDemo] = useState<DemoSource | null>(null);
   const [portfolioQuestion, setPortfolioQuestion] = useState("");
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const chatPanelRef = useRef<HTMLDivElement | null>(null);
+  const chatLogRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -227,6 +280,40 @@ function App() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [activeDemo]);
+
+  useEffect(() => {
+    chatLogRef.current?.scrollTo({
+      top: chatLogRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [chatMessages]);
+
+  function submitPortfolioQuestion(question: string) {
+    const trimmed = question.trim();
+    if (!trimmed) {
+      return;
+    }
+
+    const now = Date.now();
+    setChatMessages((messages) => [
+      ...messages,
+      { id: now, role: "user", content: trimmed },
+      {
+        id: now + 1,
+        role: "assistant",
+        content: getPortfolioAnswer(trimmed),
+      },
+    ]);
+    setPortfolioQuestion("");
+    if (window.matchMedia("(max-width: 620px)").matches) {
+      window.requestAnimationFrame(() => {
+        chatPanelRef.current?.scrollIntoView({
+          block: "center",
+          behavior: "smooth",
+        });
+      });
+    }
+  }
 
   const activeIcon = useMemo(
     () => (theme === "dark" ? <Moon size={18} /> : <Sun size={18} />),
@@ -308,50 +395,66 @@ function App() {
               Hi, I&apos;m <span>Patrick Geyer</span>
             </h1>
 
-            <div className="question-panel" aria-label="Portfolio prompts">
-              <div className="panel-log">
-                <p className="prompt">
-                  Ask about personal projects or professional employment...
-                </p>
+            <div
+              className="question-panel"
+              ref={chatPanelRef}
+              aria-label="Portfolio prompts"
+            >
+              <div className="panel-log" ref={chatLogRef}>
+                {chatMessages.length === 0 ? (
+                  <p className="prompt">
+                    Ask about personal projects or professional employment...
+                  </p>
+                ) : (
+                  <div className="chat-messages" aria-live="polite">
+                    {chatMessages.map((message) => (
+                      <div
+                        className={`chat-message ${message.role}`}
+                        key={message.id}
+                      >
+                        {message.content}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="prompt-row">
-                <button
-                  type="button"
-                  onClick={() => openPortfolioChat("projects")}
-                >
-                  Ask about personal projects
-                </button>
-                <button
-                  type="button"
-                  onClick={() => openPortfolioChat("about")}
-                >
-                  Ask about professional employment
-                </button>
+                {quickPrompts.map((prompt) => (
+                  <button
+                    key={prompt}
+                    type="button"
+                    onClick={() => submitPortfolioQuestion(prompt)}
+                  >
+                    {prompt}
+                  </button>
+                ))}
               </div>
 
               <form
                 className="fake-input"
                 onSubmit={(event) => {
                   event.preventDefault();
-                  openPortfolioChat(
-                    portfolioQuestion.toLowerCase().includes("employ") ||
-                      portfolioQuestion.toLowerCase().includes("work")
-                      ? "about"
-                      : "projects",
-                  );
+                  submitPortfolioQuestion(portfolioQuestion);
                 }}
               >
-                <input
-                  type="text"
+                <textarea
+                  rows={1}
                   value={portfolioQuestion}
                   placeholder="Ask about personal projects or professional employment..."
                   aria-label="Ask about Patrick Geyer"
                   onChange={(event) => setPortfolioQuestion(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" && !event.shiftKey) {
+                      event.preventDefault();
+                      submitPortfolioQuestion(portfolioQuestion);
+                    }
+                  }}
                 />
                 <button
                   type="submit"
-                  aria-label="Open portfolio chat"
+                  aria-label="Send portfolio question"
+                  disabled={!portfolioQuestion.trim()}
                 >
                   <Send size={16} />
                 </button>
