@@ -269,13 +269,6 @@ const botpressEmbedConfig = {
     additionalStylesheet: botpressCustomStylesheet,
   },
 };
-const quickPrompts = [
-  "Ask about personal projects",
-  "Ask about professional employment",
-  "Skills",
-  "Contact",
-];
-
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") {
     return "dark";
@@ -509,19 +502,6 @@ function App() {
                       : "Portfolio AI is unavailable. Try again in a moment."}
                   </div>
                 )}
-              </div>
-
-              <div className="prompt-row">
-                {quickPrompts.map((prompt) => (
-                  <button
-                    key={prompt}
-                    type="button"
-                    onClick={() => submitPortfolioQuestion(prompt)}
-                    disabled={botpressStatus !== "ready"}
-                  >
-                    {prompt}
-                  </button>
-                ))}
               </div>
 
               <form

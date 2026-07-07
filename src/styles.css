@@ -426,15 +426,6 @@ img {
   color: color-mix(in srgb, var(--text) 88%, var(--muted));
 }
 
-.prompt-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 20px 14px;
-}
-
-.prompt-row button,
 .stack-row span,
 .stack-cloud span {
   border: 1px solid var(--border);
@@ -443,30 +434,6 @@ img {
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 800;
-}
-
-.prompt-row button {
-  padding: 7px 14px;
-  cursor: pointer;
-  transition:
-    border-color 180ms ease,
-    color 180ms ease,
-    transform 120ms ease;
-}
-
-.prompt-row button:hover {
-  border-color: var(--accent);
-  color: var(--text);
-}
-
-.prompt-row button:disabled {
-  opacity: 0.42;
-  cursor: default;
-  transform: none;
-}
-
-.prompt-row button:active {
-  transform: scale(0.95);
 }
 
 .fake-input {
@@ -1045,11 +1012,6 @@ img {
   .botpress-webchat iframe {
     height: 310px;
     min-height: 310px;
-  }
-
-  .prompt-row {
-    justify-content: center;
-    padding-bottom: 12px;
   }
 
   .question-panel {
