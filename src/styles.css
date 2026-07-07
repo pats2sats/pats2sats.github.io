@@ -361,6 +361,36 @@ img {
   text-align: center;
 }
 
+.botpress-panel-log {
+  position: relative;
+  display: block;
+  min-height: 342px;
+  padding: 0;
+  overflow: hidden;
+  text-align: initial;
+}
+
+.botpress-webchat,
+.botpress-webchat iframe {
+  width: 100%;
+  height: 342px;
+  min-height: 342px;
+  border: 0;
+  background: transparent;
+}
+
+.botpress-state {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  color: color-mix(in srgb, var(--muted) 78%, transparent);
+  font-size: 0.875rem;
+  text-align: center;
+  pointer-events: none;
+}
+
 .chat-messages {
   display: flex;
   flex-direction: column;
@@ -429,6 +459,12 @@ img {
   color: var(--text);
 }
 
+.prompt-row button:disabled {
+  opacity: 0.42;
+  cursor: default;
+  transform: none;
+}
+
 .prompt-row button:active {
   transform: scale(0.95);
 }
@@ -455,6 +491,7 @@ img {
   color: var(--muted);
   font: inherit;
   line-height: 1.35;
+  overflow: hidden;
   resize: none;
   text-align: left;
 }
@@ -997,6 +1034,17 @@ img {
   .panel-log {
     min-height: 286px;
     padding: 22px;
+  }
+
+  .botpress-panel-log {
+    min-height: 310px;
+    padding: 0;
+  }
+
+  .botpress-webchat,
+  .botpress-webchat iframe {
+    height: 310px;
+    min-height: 310px;
   }
 
   .prompt-row {

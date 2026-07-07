@@ -19,11 +19,19 @@ type DemoSource = {
   type: "video" | "iframe";
   src: string;
 };
-type ChatMessage = {
-  id: number;
-  role: "user" | "assistant";
-  content: string;
+type BotpressApi = {
+  init: (config: typeof botpressEmbedConfig) => void;
+  open?: () => void;
+  sendMessage?: (message: string) => Promise<void> | void;
+  on?: (event: string, callback: () => void) => (() => void) | void;
 };
+
+declare global {
+  interface Window {
+    botpress?: BotpressApi;
+    __portfolioBotpressInitialized?: boolean;
+  }
+}
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -169,6 +177,98 @@ const stack = [
 const githubAvatarSrc = "/assets/patrick-github-avatar.jpg";
 const linkedinPortraitSrc = "/assets/patrick-linkedin-profile.jpg";
 const contactEmail = "patrick.geyer1@gmail.com";
+const botpressScriptId = "botpress-webchat-inject";
+const botpressScriptSrc = "https://cdn.botpress.cloud/webchat/v3.6/inject.js";
+const botpressCustomStylesheet = `
+  .bpContainer {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .bpHeaderContainer,
+  .bpComposerWrapper,
+  .bpComposerContainer,
+  .bpComposerFooter {
+    display: none !important;
+  }
+
+  .bpMessageListContainer,
+  .bpMessageListViewport {
+    background: transparent !important;
+  }
+
+  .bpMessageListViewport {
+    padding: 14px 18px 10px !important;
+  }
+
+  .bpMessageListMarqueeContainer {
+    display: none !important;
+  }
+
+  .bpMessageContainer {
+    padding: 5px 0 !important;
+  }
+
+  .bpMessageBlocksBubble {
+    border-radius: 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.11) !important;
+    background: rgba(22, 22, 28, 0.88) !important;
+    color: #f4f3f8 !important;
+    line-height: 1.5 !important;
+  }
+
+  .bpMessageBlocksTextText,
+  .bpMessageBlocksTextLink,
+  .bpMessageBlocksTextBold,
+  .bpMessageBlocksTextListItem {
+    color: inherit !important;
+  }
+`;
+const botpressEmbedConfig = {
+  botId: "ea5cf6aa-dd94-4d19-b089-dc0ee37a9e1b",
+  clientId: "82a398cd-952c-4d03-9b53-87f65226ecdc",
+  configuration: {
+    version: "v2",
+    botName: "Patrick Geyer Portfolio",
+    botDescription: "Ask about Patrick's projects, jobs, and technical stack.",
+    composerPlaceholder: "Ask about Patrick's portfolio, projects, or experience...",
+    website: {
+      title: "Portfolio",
+      link: "https://pats2sats.github.io/",
+    },
+    email: {
+      title: contactEmail,
+      link: `mailto:${contactEmail}`,
+    },
+    phone: {},
+    termsOfService: {},
+    privacyPolicy: {},
+    color: "#7C3AED",
+    variant: "solid",
+    headerVariant: "glass",
+    themeMode: "dark",
+    fontFamily: "inter",
+    radius: 4,
+    feedbackEnabled: false,
+    footer: "",
+    soundEnabled: false,
+    embeddedChatId: "bp-embedded-webchat",
+    proactiveMessageEnabled: false,
+    proactiveBubbleMessage: "",
+    proactiveBubbleTriggerType: "afterDelay",
+    proactiveBubbleDelayTime: 10,
+    conversationHistory: false,
+    homePageEnabled: false,
+    mainCardEnabled: false,
+    conversationStartersEnabled: false,
+    conversationStarters: [],
+    conversationStartersDisplayStyle: "cards",
+    additionalStylesheet: botpressCustomStylesheet,
+  },
+};
 const quickPrompts = [
   "Ask about personal projects",
   "Ask about professional employment",
@@ -189,71 +289,15 @@ function getInitialTheme(): Theme {
   return "dark";
 }
 
-function getPortfolioAnswer(question: string) {
-  const normalized = question.toLowerCase();
-
-  if (normalized.includes("hostr")) {
-    return "Hostr is Patrick's peer-to-peer short-term rental marketplace built around Nostr, Lightning, and self-custodial escrow ideas. The stack includes Flutter, Dart, a Dart SDK and CLI, Nostr event modeling, Solidity/Hardhat escrow contracts, Docker Compose, Terraform, Google Cloud, GitHub Actions, and an MCP surface for AI-assisted booking workflows.";
-  }
-
-  if (normalized.includes("nestr")) {
-    return "Nestr is a virtual office environment for Nostr protocol chatrooms. It uses React, TypeScript, Vite, Three.js, Nostr Tools, NIP-29 group concepts, NIP-46/Nostr Connect paths, encrypted IndexedDB/WebCrypto session restoration, presence, chat, and WebRTC proximity-call modeling.";
-  }
-
-  if (normalized.includes("sudonym") || normalized.includes("wallet")) {
-    return "Sudonym was a white-label Bitcoin and Lightning wallet. Patrick worked across the Flutter app, NestJS API, shared TypeScript/Dart models, Firebase auth, MySQL/Sequelize, GCP/GKE infrastructure, Cloud Build, Codemagic app-store pipelines, Core Lightning/c-lightning-rest, LNURL, BOLT11, and BOLT card/NFC flows.";
-  }
-
-  if (normalized.includes("evolut") || normalized.includes("marketing")) {
-    return "Evolut was Patrick's LinkedIn marketing automation SaaS. It combined an Angular dashboard, NestJS/Node API, Puppeteer worker infrastructure, MySQL/Sequelize, Firebase, GCP Pub/Sub and Storage, Cloud Build, GKE/App Engine, Docker, Stripe, SendGrid, Zapier, and Electron/white-label desktop builds.";
-  }
-
-  if (
-    normalized.includes("employment") ||
-    normalized.includes("professional") ||
-    normalized.includes("work") ||
-    normalized.includes("job")
-  ) {
-    return "Patrick's professional experience includes 21Bitcoin, CoinBurp, Sellar, and Majestic3. The strongest themes are Bitcoin exchange order-flow routing, backend/API development, database work, customer tax-balance calculations, REST API rebuilds, and earlier full-stack/email-marketing engineering.";
-  }
-
-  if (
-    normalized.includes("skill") ||
-    normalized.includes("stack") ||
-    normalized.includes("technology") ||
-    normalized.includes("tech")
-  ) {
-    return "Patrick's core stack is backend-leaning full-stack engineering: JavaScript, TypeScript, Node.js, NestJS, React, Angular, Flutter, Dart, Docker, Kubernetes/GKE, Terraform, Google Cloud, AWS, MySQL, Sequelize, WebSockets, Puppeteer, Stripe, SendGrid, Zapier, Bitcoin, Lightning, Nostr, EVM/Solidity, MCP, and app-store deployment.";
-  }
-
-  if (
-    normalized.includes("bitcoin") ||
-    normalized.includes("lightning") ||
-    normalized.includes("nostr") ||
-    normalized.includes("crypto")
-  ) {
-    return "Patrick has worked on Bitcoin exchange infrastructure, a custodial Lightning wallet, and newer self-sovereign Nostr marketplace experiments. Relevant technologies include Bitcoin, Lightning, Core Lightning, LNURL, BOLT11, Nostr, NIP-29, NIP-46, Cashu, Rootstock/EVM escrow, Solidity, Hardhat, ERC-4337-style account abstraction, and Boltz-oriented swap flows.";
-  }
-
-  if (normalized.includes("contact") || normalized.includes("email")) {
-    return `You can contact Patrick at ${contactEmail}. His portfolio is https://pats2sats.github.io/ and his GitHub profile is https://github.com/pats2sats.`;
-  }
-
-  if (normalized.includes("project") || normalized.includes("built")) {
-    return "A focused set of Patrick's projects: Hostr for Nostr-native accommodation, Sudonym for Bitcoin/Lightning wallet infrastructure, Evolut for marketing automation, and Nestr for virtual office chatrooms on Nostr. Broader open-source work also includes marketplace/NMDK packages around Cashu, EVM escrow, H3 geospatial tags, and local Bitcoin/Lightning/EVM stacks.";
-  }
-
-  return "I can answer best about Patrick's projects, jobs, skills, Bitcoin/Lightning/Nostr work, marketing automation work, and contact details. Try asking about Hostr, Sudonym, Evolut, Nestr, 21Bitcoin, or his cloud/backend stack.";
-}
-
 function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDemo, setActiveDemo] = useState<DemoSource | null>(null);
   const [portfolioQuestion, setPortfolioQuestion] = useState("");
-  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [botpressStatus, setBotpressStatus] = useState<
+    "loading" | "ready" | "error"
+  >("loading");
   const chatPanelRef = useRef<HTMLDivElement | null>(null);
-  const chatLogRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -282,11 +326,69 @@ function App() {
   }, [activeDemo]);
 
   useEffect(() => {
-    chatLogRef.current?.scrollTo({
-      top: chatLogRef.current.scrollHeight,
-      behavior: "smooth",
-    });
-  }, [chatMessages]);
+    let cancelled = false;
+    let cleanupHandlers: Array<() => void> = [];
+
+    const initializeBotpress = () => {
+      if (cancelled || !window.botpress?.init) {
+        return;
+      }
+
+      if (window.__portfolioBotpressInitialized) {
+        window.botpress.open?.();
+        setBotpressStatus("ready");
+        return;
+      }
+
+      cleanupHandlers = [
+        window.botpress.on?.("webchat:initialized", () => {
+          window.botpress?.open?.();
+          setBotpressStatus("ready");
+        }),
+        window.botpress.on?.("webchat:ready", () => setBotpressStatus("ready")),
+        window.botpress.on?.("error", () => setBotpressStatus("error")),
+      ].filter((handler): handler is () => void => typeof handler === "function");
+
+      try {
+        window.__portfolioBotpressInitialized = true;
+        window.botpress.init(botpressEmbedConfig);
+      } catch {
+        window.__portfolioBotpressInitialized = false;
+        setBotpressStatus("error");
+      }
+    };
+
+    if (window.botpress?.init) {
+      initializeBotpress();
+      return () => {
+        cancelled = true;
+        cleanupHandlers.forEach((cleanup) => cleanup());
+      };
+    }
+
+    let script = document.getElementById(
+      botpressScriptId,
+    ) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = botpressScriptId;
+      script.src = botpressScriptSrc;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+
+    const handleLoad = () => initializeBotpress();
+    const handleError = () => setBotpressStatus("error");
+    script.addEventListener("load", handleLoad);
+    script.addEventListener("error", handleError);
+
+    return () => {
+      cancelled = true;
+      script.removeEventListener("load", handleLoad);
+      script.removeEventListener("error", handleError);
+      cleanupHandlers.forEach((cleanup) => cleanup());
+    };
+  }, []);
 
   function submitPortfolioQuestion(question: string) {
     const trimmed = question.trim();
@@ -294,16 +396,10 @@ function App() {
       return;
     }
 
-    const now = Date.now();
-    setChatMessages((messages) => [
-      ...messages,
-      { id: now, role: "user", content: trimmed },
-      {
-        id: now + 1,
-        role: "assistant",
-        content: getPortfolioAnswer(trimmed),
-      },
-    ]);
+    window.botpress?.open?.();
+    Promise.resolve(window.botpress?.sendMessage?.(trimmed)).catch(() => {
+      setBotpressStatus("error");
+    });
     setPortfolioQuestion("");
     if (window.matchMedia("(max-width: 620px)").matches) {
       window.requestAnimationFrame(() => {
@@ -400,21 +496,17 @@ function App() {
               ref={chatPanelRef}
               aria-label="Portfolio prompts"
             >
-              <div className="panel-log" ref={chatLogRef}>
-                {chatMessages.length === 0 ? (
-                  <p className="prompt">
-                    Ask about personal projects or professional employment...
-                  </p>
-                ) : (
-                  <div className="chat-messages" aria-live="polite">
-                    {chatMessages.map((message) => (
-                      <div
-                        className={`chat-message ${message.role}`}
-                        key={message.id}
-                      >
-                        {message.content}
-                      </div>
-                    ))}
+              <div className="panel-log botpress-panel-log">
+                <div
+                  id="bp-embedded-webchat"
+                  className="botpress-webchat"
+                  aria-label="Patrick Geyer portfolio AI chat"
+                />
+                {botpressStatus !== "ready" && (
+                  <div className="botpress-state" aria-live="polite">
+                    {botpressStatus === "loading"
+                      ? "Connecting portfolio AI..."
+                      : "Portfolio AI is unavailable. Try again in a moment."}
                   </div>
                 )}
               </div>
@@ -425,6 +517,7 @@ function App() {
                     key={prompt}
                     type="button"
                     onClick={() => submitPortfolioQuestion(prompt)}
+                    disabled={botpressStatus !== "ready"}
                   >
                     {prompt}
                   </button>
@@ -454,7 +547,9 @@ function App() {
                 <button
                   type="submit"
                   aria-label="Send portfolio question"
-                  disabled={!portfolioQuestion.trim()}
+                  disabled={
+                    !portfolioQuestion.trim() || botpressStatus !== "ready"
+                  }
                 >
                   <Send size={16} />
                 </button>
