@@ -581,11 +581,10 @@ function App() {
 
             <article className="about-tile text-tile">
               <p className="tile-label">Craft</p>
-              <h2>Building software in finance, cryptography, marketing.</h2>
+              <h2>Full-stack product engineering</h2>
               <p>
-                I have shipped frontend, backend and cloud components for
-                applications serving the marketing, finance and bitcoin
-                industries.
+                From backend APIs and cloud infrastructure to frontend apps
+                delivered across web, desktop, and app stores.
               </p>
             </article>
 
