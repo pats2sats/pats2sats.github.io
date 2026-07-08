@@ -561,10 +561,11 @@ function App() {
           <div className="about-grid">
             <article className="about-tile focus-tile">
               <p className="tile-label">Scope</p>
-              <h3>Marketing, finance, cryptography</h3>
+              <h3>SaaS, marketing, finance, cryptography</h3>
               <p>
-                Startup systems, wallet infrastructure, and Nostr-native
-                product experiments.
+                Experience in SaaS startups, marketing companies,
+                international financial exchanges, and working with protocol
+                level cryptography.
               </p>
             </article>
 
