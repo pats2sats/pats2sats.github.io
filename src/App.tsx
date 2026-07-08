@@ -176,6 +176,7 @@ const stack = [
 
 const githubAvatarSrc = "/assets/patrick-github-avatar.jpg";
 const linkedinPortraitSrc = "/assets/patrick-linkedin-profile.jpg";
+const githubProfileUrl = "https://github.com/pats2sats";
 const contactEmail = "patrick.geyer1@gmail.com";
 const botpressScriptId = "botpress-webchat-inject";
 const botpressScriptSrc = "https://cdn.botpress.cloud/webchat/v3.6/inject.js";
@@ -430,10 +431,23 @@ function App() {
             ))}
           </div>
 
-          <a className="contact-button" href={`mailto:${contactEmail}`}>
-            <Calendar size={16} />
-            <span>Contact</span>
-          </a>
+          <div className="top-actions">
+            <a
+              className="github-button"
+              href={githubProfileUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub profile"
+            >
+              <GitHubMark />
+              <span>GitHub</span>
+            </a>
+
+            <a className="contact-button" href={`mailto:${contactEmail}`}>
+              <Calendar size={16} />
+              <span>Contact</span>
+            </a>
+          </div>
 
           <button
             className="icon-button menu-button"
@@ -659,7 +673,7 @@ function App() {
       </main>
 
       <footer id="other" className="site-footer">
-        <a href="https://github.com/pats2sats" target="_blank" rel="noreferrer">
+        <a href={githubProfileUrl} target="_blank" rel="noreferrer">
           <GitHubMark />
           <span>GitHub</span>
         </a>
