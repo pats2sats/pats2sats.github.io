@@ -175,7 +175,7 @@ const stack = [
 ];
 
 const githubAvatarSrc = "/assets/patrick-github-avatar.jpg";
-const linkedinPortraitSrc = "/assets/patrick-linkedin-profile.jpg";
+const linkedinPortraitSrc = "/assets/patrick-linkedin-profile-30.png";
 const githubProfileUrl = "https://github.com/pats2sats";
 const contactEmail = "patrick.geyer1@gmail.com";
 const botpressScriptId = "botpress-webchat-inject";
@@ -574,8 +574,8 @@ function App() {
                 className="portrait-photo"
                 src={linkedinPortraitSrc}
                 alt="Patrick Geyer LinkedIn profile photo"
-                width="200"
-                height="200"
+                width="1254"
+                height="1254"
               />
             </article>
 
