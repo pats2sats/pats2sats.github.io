@@ -71,8 +71,8 @@ const projects: Array<{
     description:
       "A SaaS platform for LinkedIn marketing automation with an Angular dashboard, NestJS API, Puppeteer workers, GCP infrastructure, Stripe billing, Zapier, and Electron builds.",
     link: "https://github.com/pats2sats/linkedin_frontend",
-    linkLabel: "Private repos",
-    repoPrivate: true,
+    linkLabel: "Public repos",
+    repoPrivate: false,
     demo: {
       title: "Evolut Demo",
       type: "iframe",
@@ -86,8 +86,8 @@ const projects: Array<{
     description:
       "A white-label Bitcoin and Lightning wallet with a Flutter app, NestJS API, Core Lightning node services, LNURL flows, BOLT card support, and app-store pipelines.",
     link: "https://github.com/sudonym-btc/sudonym",
-    linkLabel: "Private repo",
-    repoPrivate: true,
+    linkLabel: "Public repo",
+    repoPrivate: false,
     demo: {
       title: "Sudonym Wallet Demo",
       type: "video",

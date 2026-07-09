@@ -40,12 +40,13 @@ Highest-confidence sources inspected:
   - `sudonym-btc/hostr-codex`
   - `sudonym-btc/zap`
   - `sudonym-btc/homebrew-zap`
-- Evolut private source repos cloned for inspection:
+- Evolut public source repositories inspected:
   - `pats2sats/linkedin_frontend`
   - `pats2sats/linkedin_api`
   - `pats2sats/linkedin_bot`
   - `pats2sats/linkedin_zapier`
   - `pats2sats/linkedin_downloadable`
+- Evolut archived legacy repositories inspected privately:
   - `pats2sats/linkedin_default`
   - `pats2sats/linkedin_api_old`
   - `pats2sats/linkedin_cloud_functions`
@@ -198,7 +199,7 @@ Sudonym is a white-label Bitcoin and Lightning wallet with a Flutter mobile app,
 
 - GitHub repo URL: `https://github.com/sudonym-btc/sudonym`
 - Main branch: `main`
-- Repo status: private.
+- Repo status: public.
 
 ### Product Scope
 
@@ -1031,7 +1032,7 @@ Frontend CI/deploy:
 
 Frontend caveat:
 
-- `karma.conf.js` contains unresolved merge-conflict markers in the inspected private source. Do not claim the frontend test config is currently clean without confirmation.
+- `karma.conf.js` contains unresolved merge-conflict markers in the inspected public source. Do not claim the frontend test config is currently clean without confirmation.
 
 ### Evolut API
 
@@ -1549,8 +1550,8 @@ Current visual assets:
 Featured project repo visibility in the portfolio:
 
 - Hostr: public repo, `https://github.com/sudonym-btc/hostr`.
-- Evolut: private source repos under `pats2sats`, represented by `https://github.com/pats2sats/linkedin_frontend`.
-- Sudonym: private repo, `https://github.com/sudonym-btc/sudonym`.
+- Evolut: public source repositories under `pats2sats`, represented by `https://github.com/pats2sats/linkedin_frontend`.
+- Sudonym: public repo, `https://github.com/sudonym-btc/sudonym`.
 - Nestr: public repo, `https://github.com/sudonym-btc/nestr`.
 
 ## AI Interaction Plan for Portfolio
@@ -1626,6 +1627,6 @@ Do not state these as fact until Patrick confirms:
 - Sudonym current availability, user/transaction metrics, and whether it should be framed as archived, demo, or launched product.
 - NMDK package status, production-readiness, release/versioning plans, and whether it should be framed as Hostr infrastructure or standalone marketplace protocol work.
 - Zap current maintenance status, usage metrics, release status, and whether wallet credential handling has changed since the inspected README warning.
-- Whether private repo names may be mentioned publicly.
+- Whether remaining private legacy repo names may be mentioned publicly.
 - Whether phone number should be exposed.
 - Whether older Evolut details should be framed as "legacy stack" or simply "historical startup work."
